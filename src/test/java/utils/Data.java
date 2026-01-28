@@ -11,6 +11,7 @@ public final class Data {
         public static final String VISUAL_LOGIN = "visual_user";
 
         public static final String VALID_PASSWORD = "secret_sauce";
+        public static final String INVALID_PASSWORD = "secret_sauce1";
     }
 
     public static class Endpoints {

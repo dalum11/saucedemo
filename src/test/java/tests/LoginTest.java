@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import config.TestConfig;
 import io.qameta.allure.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
@@ -110,6 +111,27 @@ public class LoginTest extends BaseTest {
                 () -> assertThat(headerComponent.isShoppingCartDisplayed()).isTrue(),
                 () -> assertThat(headerComponent.isShoppingCartEnabled()).isTrue());
         assertThat(mainPage.isProductCardDisplayed(productCartIndex)).isTrue();
+    }
 
+    @Test
+    @DisplayName("Проверка авторизации с несущкствующим в базе паролем")
+    @Description("Тест проверяет, что невалидный пользователь получает сообщение об ошибке вместо авторизации")
+    @Tag("smoke")
+    @Tag("regression")
+    void loginWithWrongPassword_ShouldFailAuth() {
+        String expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
+        loginPage.login(Data.Login.VALID_LOGIN, Data.Login.INVALID_PASSWORD);
+
+        assertAll("Сообщение об ошибке должно быть видимо и содержать лпределённый текст",
+                () -> assertThat(loginPage.isErrorMessageDisplayed())
+                        .as("Сообщение об ошибке должно отображаться").isTrue(),
+                () -> assertThat(loginPage.getErrorMessageText())
+                        .as("Текст ошибки").isEqualTo(expectedErrorMessage)
+        );
+
+        assertThat(driver.getCurrentUrl())
+                .as("После ошибки пользователь должен остаться на странице авторизации")
+                .isEqualTo(TestConfig.getBaseUrl())
+                .doesNotContain(Data.Endpoints.MAIN_PAGE);
     }
 }

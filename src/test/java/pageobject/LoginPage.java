@@ -16,6 +16,7 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_BUTTON = By.id("login-button");
     private static final By AVAILABLE_USERNAMES = By.xpath("//div[@id='login_credentials']//br");
     private static final By AVAILABLE_PASSWORDS = By.xpath("//div[@class='login_password']//br");
+    private static final By USER_NOT_EXIST_ERROR_MESSAGE = By.xpath("//div[@class='error-message-container error']//h3");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -121,6 +122,15 @@ public class LoginPage extends BasePage {
         findElement(LOGIN).clear();
     }
 
+    @Step("Проверка видимости сообщения об ошибке")
+    public boolean isErrorMessageDisplayed() {
+        return findElement(USER_NOT_EXIST_ERROR_MESSAGE).isDisplayed();
+    }
+
+    @Step("Получение текста сообщения об ошибке")
+    public String getErrorMessageText() {
+        return findElement(USER_NOT_EXIST_ERROR_MESSAGE).getText();
+    }
 
     private List<String> parseCredentialsText(String text, String prefixToRemove) {
         String cleanedText = text.replace(prefixToRemove, "").trim();
