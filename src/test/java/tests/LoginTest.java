@@ -4,7 +4,13 @@ import base.BaseTest;
 import io.qameta.allure.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
+import pageobject.HeaderComponent;
 import pageobject.LoginPage;
+import pageobject.MainPage;
+import utils.Data;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Epic("Авторизация")
 @Feature("Вход")
@@ -14,12 +20,16 @@ import pageobject.LoginPage;
 public class LoginTest extends BaseTest {
 
     LoginPage loginPage;
+    MainPage mainPage;
+    HeaderComponent headerComponent;
 
     @BeforeEach
     @Step("Подготовка теста")
     protected void setUp(TestInfo testInfo) {
         super.setUp(testInfo);
         loginPage = new LoginPage(driver);
+        mainPage = new MainPage(driver);
+        headerComponent = new HeaderComponent(driver);
         openLoginPage();
     }
 
@@ -76,5 +86,30 @@ public class LoginTest extends BaseTest {
                 .isEqualTo("Login");
 
         softly.assertAll();
+    }
+
+    @Test
+    @DisplayName("Проверка авторизации с логином и паролем от валидного пользователя")
+    @Description("Тест проверяет, что валидный пользователь авторизуется успешно")
+    @Tag("smoke")
+    @Tag("regression")
+    void checkSuccessfulLoginWithValidUser() {
+        int productCartIndex = 0;
+        loginPage.login(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
+
+        mainPage.waitForPageLoad();
+
+        assertThat(driver.getCurrentUrl()).as("URL текущей страницы")
+                .startsWith("https://")
+                .contains(Data.Endpoints.MAIN_PAGE);
+        assertAll("Все элементы должны быть видимы",
+                () -> assertThat(headerComponent.isPageTitleDisplayed()).isTrue(),
+                () -> assertThat(headerComponent.getPageTitleText()).isEqualTo("Swag Labs"),
+                () -> assertThat(headerComponent.isMenuButtonDisplayed()).isTrue(),
+                () -> assertThat(headerComponent.isMenuButtonEnabled()).isTrue(),
+                () -> assertThat(headerComponent.isShoppingCartDisplayed()).isTrue(),
+                () -> assertThat(headerComponent.isShoppingCartEnabled()).isTrue());
+        assertThat(mainPage.isProductCardDisplayed(productCartIndex)).isTrue();
+
     }
 }

@@ -128,4 +128,21 @@ public abstract class BasePage {
     protected boolean isEnabled(By locator) {
         return findElement(locator).isDisplayed();
     }
+
+    @Step("Нажатие на элемент {element}")
+    protected void clickOnElement(WebElement element) {
+        element.click();
+    }
+
+    protected boolean isElementDisplayed(WebElement element) {
+        return element.isDisplayed();
+    }
+
+    protected boolean isElementEnabled(WebElement element) {
+        return element.isEnabled();
+    }
+
+    protected String getElementText(WebElement element) {
+        return element.getText();
+    }
 }
