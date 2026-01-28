@@ -39,6 +39,7 @@ public class LoginTest extends BaseTest {
     @Description("Тест проверяет, что все основные элементы страницы авторизации присутствуют")
     @Tag("smoke")
     @Tag("regression")
+    @Step("Проверка элементов страницы логина")
     void loginPage_shouldDisplayAllRequiredElements() {
         SoftAssertions softly = new SoftAssertions();
 
@@ -94,6 +95,7 @@ public class LoginTest extends BaseTest {
     @Description("Тест проверяет, что валидный пользователь авторизуется успешно")
     @Tag("smoke")
     @Tag("regression")
+    @Step("Тест успешной авторизации")
     void checkSuccessfulLoginWithValidUser() {
         int productCartIndex = 0;
         loginPage.login(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
@@ -114,21 +116,43 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка авторизации с несущкствующим в базе паролем")
+    @DisplayName("Проверка авторизации с несуществующим в базе паролем")
     @Description("Тест проверяет, что невалидный пользователь получает сообщение об ошибке вместо авторизации")
     @Tag("smoke")
     @Tag("regression")
+    @Step("Тест неуспешной авторизации с невалидным паролем")
     void loginWithWrongPassword_ShouldFailAuth() {
         String expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
         loginPage.login(Data.Login.VALID_LOGIN, Data.Login.INVALID_PASSWORD);
 
-        assertAll("Сообщение об ошибке должно быть видимо и содержать лпределённый текст",
+        assertErrorMessage(expectedErrorMessage);
+        assertThatPageNotChanged();
+    }
+
+    @Test
+    @DisplayName("Проверка авторизации заблокированного пользователя")
+    @Description("Тест проверяет, что заблокированный пользователь получает сообщение об ошибке вместо авторизации")
+    @Tag("smoke")
+    @Tag("regression")
+    @Step("Тест неуспешной авторизации заблокированного пользователя")
+    void loginByBlockedUser_ShouldFailAuth() {
+        String expectedErrorMessage = "Epic sadface: Sorry, this user has been locked out.";
+        loginPage.login(Data.Login.LOCKED_OUT_LOGIN, Data.Login.VALID_PASSWORD);
+
+        assertErrorMessage(expectedErrorMessage);
+        assertThatPageNotChanged();
+    }
+
+    private void assertErrorMessage(String expectedErrorMessage) {
+        assertAll("Сообщение об ошибке должно быть видимо и содержать определённый текст",
                 () -> assertThat(loginPage.isErrorMessageDisplayed())
                         .as("Сообщение об ошибке должно отображаться").isTrue(),
                 () -> assertThat(loginPage.getErrorMessageText())
                         .as("Текст ошибки").isEqualTo(expectedErrorMessage)
         );
+    }
 
+    private void assertThatPageNotChanged() {
         assertThat(driver.getCurrentUrl())
                 .as("После ошибки пользователь должен остаться на странице авторизации")
                 .isEqualTo(TestConfig.getBaseUrl())
