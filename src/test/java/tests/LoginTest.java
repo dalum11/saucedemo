@@ -6,16 +6,11 @@ import io.qameta.allure.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pageobject.HeaderComponent;
 import pageobject.LoginPage;
 import pageobject.MainPage;
 import utils.Data;
-
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -42,7 +37,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Все обязательные элементы страницы логина отображаются")
+    @DisplayName("Проверка отображения всех обязательных элементов страницы")
     @Description("Тест проверяет, что все основные элементы страницы авторизации присутствуют")
     @Tag("smoke")
     @Tag("regression")
@@ -98,32 +93,21 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка авторизации с логином и паролем от валидного пользователя")
+    @DisplayName("Успешная авторизация пользователя с валидными логином и паролем")
     @Description("Тест проверяет, что валидный пользователь авторизуется успешно")
     @Tag("smoke")
     @Tag("regression")
     @Step("Тест успешной авторизации")
     void checkSuccessfulLoginWithValidUser() {
-        int productCartIndex = 0;
+        int productCardIndex = 0;
         loginPage.login(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
 
         mainPage.waitForPageLoad();
-
-        assertThat(driver.getCurrentUrl()).as("URL текущей страницы")
-                .startsWith("https://")
-                .contains(Data.Endpoints.MAIN_PAGE);
-        assertAll("Все элементы должны быть видимы",
-                () -> assertThat(headerComponent.isPageTitleDisplayed()).isTrue(),
-                () -> assertThat(headerComponent.getPageTitleText()).isEqualTo("Swag Labs"),
-                () -> assertThat(headerComponent.isMenuButtonDisplayed()).isTrue(),
-                () -> assertThat(headerComponent.isMenuButtonEnabled()).isTrue(),
-                () -> assertThat(headerComponent.isShoppingCartDisplayed()).isTrue(),
-                () -> assertThat(headerComponent.isShoppingCartEnabled()).isTrue());
-        assertThat(mainPage.isProductCardDisplayed(productCartIndex)).isTrue();
+        assertGoingToMainPage(productCardIndex);
     }
 
     @Test
-    @DisplayName("Проверка авторизации с несуществующим в базе паролем")
+    @DisplayName("Проверка авторизации пользователя с неподходящим паролем")
     @Description("Тест проверяет, что невалидный пользователь получает сообщение об ошибке вместо авторизации")
     @Tag("smoke")
     @Tag("regression")
@@ -154,16 +138,13 @@ public class LoginTest extends BaseTest {
     @ParameterizedTest(name = "Пустой логин: {0}")
     @ValueSource(strings = {"", " ", "  "})
     @Tag("validation")
-    @DisplayName("Вход с пустым логином должен показывать ошибку и ищется в базе")
+    @DisplayName("Получение ошибки при входе с пустым логином")
     @Step("Тест попытки входа с пустым логином")
     void loginWithEmptyUsername_ShouldShowUsernameRequiredError(String username) {
         String expectedErrorMessage = "Epic sadface: Username is required";
         loginPage.login(username, Data.Login.VALID_PASSWORD);
 
-        assertThat(loginPage.getErrorMessageText())
-                .as("Ошибка для пустого логина")
-                .isEqualTo(expectedErrorMessage);
-
+        assertErrorMessage(expectedErrorMessage);
         assertThatPageNotChanged();
     }
 
@@ -171,32 +152,40 @@ public class LoginTest extends BaseTest {
     @ParameterizedTest(name = "Пустой пароль: {0}")
     @ValueSource(strings = {"", " ", "  "})
     @Tag("validation")
-    @DisplayName("Вход с пустым паролем должен показывать ошибку")
+    @DisplayName("Получение ошибки при входе с пустым паролем")
     @Step("Тест попытки входа с пустым паролем")
     void loginWithEmptyPassword_ShouldShowPasswordRequiredError(String password) {
         String expectedErrorMessage = "Epic sadface: Password is required";
         loginPage.login(Data.Login.VALID_LOGIN, password);
 
-        assertThat(loginPage.getErrorMessageText())
-                .as("Ошибка для пустого пароля")
-                .isEqualTo(expectedErrorMessage);
-
+        assertErrorMessage(expectedErrorMessage);
         assertThatPageNotChanged();
     }
 
     @Test
-    @DisplayName("Вход с пустыми обоими полями должен показывать ошибку логина")
+    @DisplayName("Вход с пустыми логином и паролем должен показывать ошибку валидации логина")
     @Tag("validation")
     @Step("Тест попытки входа с пустым логином и паролем")
     void loginWithEmptyBothFields_ShouldShowUsernameRequiredError() {
         String expectedErrorMessage = "Epic sadface: Username is required";
         loginPage.login("", "");
 
-        assertThat(loginPage.getErrorMessageText())
-                .as("При пустых обоих полях должна быть ошибка логина")
-                .isEqualTo(expectedErrorMessage);
-
+        assertErrorMessage(expectedErrorMessage);
         assertThatPageNotChanged();
+    }
+
+    @Test
+    @DisplayName("Авторизация при необычно долгой загрузке страницы")
+    @Description("Тест проверяет необычно долгую зашрузку страницы")
+    @Tag("smoke")
+    @Tag("regression")
+    @Step("Тест долгой загрузки страницы")
+    void loginWithPerformanceGlitchUser_ShouldLoadPageWithTimeout() {
+        int productCardIndex = 0;
+        loginPage.login(Data.Login.PERFORMANCE_GLITCH_LOGIN, Data.Login.VALID_PASSWORD);
+        mainPage.waitForPageLoad();
+
+        assertGoingToMainPage(productCardIndex);
     }
 
     private void assertErrorMessage(String expectedErrorMessage) {
@@ -213,5 +202,19 @@ public class LoginTest extends BaseTest {
                 .as("После ошибки пользователь должен остаться на странице авторизации")
                 .isEqualTo(TestConfig.getBaseUrl())
                 .doesNotContain(Data.Endpoints.MAIN_PAGE);
+    }
+
+    private void assertGoingToMainPage(int productCardIndex) {
+        assertThat(driver.getCurrentUrl()).as("URL текущей страницы")
+                .startsWith("https://")
+                .contains(Data.Endpoints.MAIN_PAGE);
+        assertAll("Все элементы должны быть видимы",
+                () -> assertThat(headerComponent.isPageTitleDisplayed()).isTrue(),
+                () -> assertThat(headerComponent.getPageTitleText()).isEqualTo("Swag Labs"),
+                () -> assertThat(headerComponent.isMenuButtonDisplayed()).isTrue(),
+                () -> assertThat(headerComponent.isMenuButtonEnabled()).isTrue(),
+                () -> assertThat(headerComponent.isShoppingCartDisplayed()).isTrue(),
+                () -> assertThat(headerComponent.isShoppingCartEnabled()).isTrue());
+        assertThat(mainPage.isProductCardDisplayed(productCardIndex)).isTrue();
     }
 }
