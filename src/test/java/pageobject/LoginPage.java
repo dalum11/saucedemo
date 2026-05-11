@@ -3,8 +3,11 @@ package pageobject;
 import base.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +17,9 @@ public class LoginPage extends BasePage {
     private static final By LOGIN = By.id("user-name");
     private static final By PASSWORD = By.id("password");
     private static final By LOGIN_BUTTON = By.id("login-button");
-    private static final By AVAILABLE_USERNAMES = By.xpath("//div[@id='login_credentials']//br");
-    private static final By AVAILABLE_PASSWORDS = By.xpath("//div[@class='login_password']//br");
-    private static final By USER_NOT_EXIST_ERROR_MESSAGE = By.xpath("//div[@class='error-message-container error']//h3");
+    private static final By AVAILABLE_USERNAMES = By.xpath("//div[@id='login_credentials']");
+    private static final By AVAILABLE_PASSWORDS = By.xpath("//div[@class='login_password']");
+    private static final By ERROR_MESSAGE = By.xpath("//div[@class='error-message-container error']//h3");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -57,6 +60,11 @@ public class LoginPage extends BasePage {
         return getAttribute(locator, "placeholder");
     }
 
+    @Step("Получение отображаемого значения")
+    public String getValue(By locator) {
+        return getAttribute(locator, "value");
+    }
+
     @Step("Проверка доступности поля пароля")
     public boolean isPasswordFieldEnabled() {
         return isEnabled(PASSWORD);
@@ -84,14 +92,14 @@ public class LoginPage extends BasePage {
 
     @Step("Получение списка доступных логинов")
     public List<String> getAvailableUsernames() {
-        String credentialsText = getText(AVAILABLE_USERNAMES);
-        return parseCredentialsText(credentialsText, "Accepted usernames are:");
+        WebElement availableUsernames = findElement(AVAILABLE_USERNAMES);
+        return getUsernamesFromCredentialsBlock(availableUsernames);
     }
 
     @Step("Получение доступного пароля")
     public String getAvailablePassword() {
-        String passwordText = getText(AVAILABLE_PASSWORDS);
-        return parseCredentialsText(passwordText, "Password for all users:").get(0);
+        WebElement passwords = findElement(AVAILABLE_PASSWORDS);
+        return getUsernamesFromCredentialsBlock(passwords).get(1);
     }
 
     @Step("Ввод логина: {username}")
@@ -124,20 +132,50 @@ public class LoginPage extends BasePage {
 
     @Step("Проверка видимости сообщения об ошибке")
     public boolean isErrorMessageDisplayed() {
-        return findElement(USER_NOT_EXIST_ERROR_MESSAGE).isDisplayed();
+        try {
+            return findElement(ERROR_MESSAGE).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
-    @Step("Получение текста сообщения об ошибке")
+    @Step("Блюр элемента {element}")
+    public void blurActiveElement() {
+        super.blurActiveElement();
+    }
+
+    @Step("Обновление страницы")
+    public void refresh() {
+        super.refreshPage();
+    }
+
+    @Step("Получение текста логина")
+    public String getLoginText() {
+        return findElement(LOGIN).getText();
+    }
+
+    @Step("Получение текста пароля")
+    public String getPasswordText() {
+        return findElement(PASSWORD).getText();
+    }
+
+    @Step("Получение текста ошибки авторизации")
     public String getErrorMessageText() {
-        return findElement(USER_NOT_EXIST_ERROR_MESSAGE).getText();
+        return findElement(ERROR_MESSAGE).getText();
     }
 
-    private List<String> parseCredentialsText(String text, String prefixToRemove) {
-        String cleanedText = text.replace(prefixToRemove, "").trim();
-
-        return cleanedText.lines()
+    private List<String> getUsernamesFromCredentialsBlock(WebElement credentialsBlock) {
+        String fullText = (String) (jsExecutor)
+                .executeScript("return arguments[0].innerText;", credentialsBlock);
+        String withoutHeader = fullText.replace("Accepted usernames are:", "").trim();
+        return Arrays.stream(withoutHeader.split("\\n"))
                 .map(String::trim)
                 .filter(line -> !line.isEmpty())
                 .collect(Collectors.toList());
+    }
+
+    @Step("Получение маскированного пароля")
+    public String getMaskedPassword() {
+        return getValue(PASSWORD);
     }
 }

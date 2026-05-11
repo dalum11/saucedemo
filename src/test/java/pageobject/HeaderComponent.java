@@ -17,6 +17,8 @@ public class HeaderComponent extends BasePage {
     @FindBy(className = "shopping_cart_link")
     private WebElement shoppingCart;
 
+    @FindBy(id = "logout_sidebar_link")
+    private WebElement logoutButton;
 
     public HeaderComponent(WebDriver driver) {
         super(driver);

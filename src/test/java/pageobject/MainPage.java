@@ -15,6 +15,8 @@ public class MainPage extends BasePage {
 
     private static final By PRODUCTS_IMAGE = By.className("inventory_item_img");
     private static final By PRODUCTS_NAME = By.className("inventory_item_name");
+    private static final By MENU_BUTTON = By.id("react-burger-menu-btn");
+    private static final By LOGOUT_BUTTON = By.id("logout_sidebar_link");
     private static final By PRODUCTS_PRICE = By.className("inventory_item_price");
     private static final By PRODUCTS_CARDS = By.className("inventory_item");
     private static final By ADD_IN_CART_BUTTON = By.xpath("//button[@class='btn btn_primary btn_small btn_inventory ']");
@@ -70,5 +72,16 @@ public class MainPage extends BasePage {
                 isElementDisplayed(card.findElement(PRODUCTS_PRICE)) &&
                 isElementDisplayed(card.findElement(ADD_IN_CART_BUTTON)) &&
                 isElementDisplayed(card.findElement(PRODUCTS_NAME));
+    }
+
+    @Step("Нажатие на кнопку Меню")
+    public void clickOnMenuButton() {
+        click(MENU_BUTTON);
+    }
+
+    @Step("Выход пользователя из системы")
+    public void logout() {
+        clickOnMenuButton();
+        click(LOGOUT_BUTTON);
     }
 }
