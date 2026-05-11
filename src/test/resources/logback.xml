@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Консольный аппендер -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Файловый аппендер для всех логов -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/test-execution.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Аппендер для HTML отчета (для Allure) -->
+    <appender name="ALLURE" class="config.AllureLogAppender"/>
+
+    <!-- Корневой логгер -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ALLURE"/>
+    </root>
+
+    <!-- Уровни логирования для разных пакетов -->
+    <logger name="config" level="DEBUG"/>
+    <logger name="pageobject" level="DEBUG"/>
+    <logger name="assertions" level="DEBUG"/>
+    <logger name="tests" level="INFO"/>
+
+    <!-- Уменьшаем логи от Selenium -->
+    <logger name="org.openqa.selenium" level="WARN"/>
+    <logger name="org.openqa.selenium.devtools" level="WARN"/>
+</configuration>

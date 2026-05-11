@@ -4,6 +4,7 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,29 +30,16 @@ public class TestConfig {
     public static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
 
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-extensions");
-
-        if (isHeadless()) {
-            options.addArguments("--headless=new");
-        }
-
-        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        // Комбинация всего
+        options.addArguments("--incognito");
+        options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-features=PasswordLeakDetection,SavePassword");
 
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.default_content_setting_values.notifications", 2);
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection.enabled", false);
         options.setExperimentalOption("prefs", prefs);
-
-        options.setCapability("goog:loggingPrefs", Map.of(
-                "browser", "INFO",
-                "performance", "ALL"
-        ));
 
         return options;
     }

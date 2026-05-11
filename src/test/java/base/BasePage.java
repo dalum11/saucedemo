@@ -31,6 +31,10 @@ public abstract class BasePage {
         waitForPageLoad();
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     @Step("Ожидание загрузки страницы")
     protected void waitForPageLoad() {
         try {
@@ -134,15 +138,23 @@ public abstract class BasePage {
         element.click();
     }
 
+    @Step("Проверка видимости элемента {element}")
     protected boolean isElementDisplayed(WebElement element) {
         return element.isDisplayed();
     }
 
+    @Step("Проверка доступности элемента {element} для нажатия")
     protected boolean isElementEnabled(WebElement element) {
         return element.isEnabled();
     }
 
+    @Step("Получение текста элемента {element}")
     protected String getElementText(WebElement element) {
         return element.getText();
+    }
+
+    @Step("Проверка заблюривания элемента {element}")
+    protected void blurActiveElement() {
+        jsExecutor.executeScript("document.activeElement.blur();");
     }
 }
