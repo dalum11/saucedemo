@@ -1,0 +1,713 @@
+2026-03-20 19:24:35 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 19:24:36 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 19:24:36 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 19:24:37 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 19:24:38 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 19:24:38 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 19:24:38 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 19:24:38 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 19:24:39 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 19:24:39 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 19:24:39 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 19:24:39 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 19:24:39 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 19:24:39 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 19:24:39 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 19:24:39 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 19:24:39 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 19:24:50 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774023890350.png
+2026-03-20 19:28:27 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 19:28:27 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 19:28:27 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 19:28:28 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 19:28:29 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 19:28:29 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 19:28:29 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 19:28:30 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 19:28:30 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 19:28:30 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 19:28:30 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 19:28:30 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 19:28:30 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 19:28:30 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 19:28:30 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 19:28:30 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 19:28:30 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 19:28:41 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774024121641.png
+2026-03-20 19:32:24 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 19:32:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 19:32:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 19:32:26 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 19:32:26 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 19:32:27 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 19:32:27 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 19:32:27 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 19:32:28 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 19:32:28 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 19:32:29 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 19:32:29 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 19:32:29 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 19:32:29 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 19:32:29 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 19:32:29 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 19:32:29 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 19:33:23 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774024403899.png
+2026-03-20 19:34:07 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 19:34:07 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 19:34:07 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 19:34:09 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 19:34:09 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 19:34:10 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 19:34:10 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 19:34:10 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 19:34:10 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 19:34:10 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 19:34:11 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 19:34:11 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 19:34:11 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 19:34:11 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 19:34:11 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 19:34:11 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 19:34:11 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 19:35:56 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 19:35:57 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 19:35:57 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 19:35:58 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 19:35:58 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 19:35:59 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 19:35:59 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 19:35:59 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 19:35:59 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 19:36:00 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 19:36:00 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 19:36:00 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 19:36:00 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 19:36:00 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 19:36:00 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 19:36:00 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 19:36:00 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 19:36:52 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774024612920.png
+2026-03-20 20:16:10 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:16:10 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:16:10 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:16:12 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:16:12 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:16:13 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:16:13 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:16:13 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:16:13 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:16:13 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:16:14 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:16:14 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:16:14 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:16:14 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:16:14 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:16:14 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:16:14 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:19:10 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:19:11 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:19:11 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:19:12 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:19:12 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:19:13 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:19:13 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:19:13 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:19:13 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:19:13 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:19:14 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:19:14 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:19:14 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:19:14 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:19:14 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:19:14 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:19:14 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:19:14 [main] INFO  base.BasePage - Доступные логины: 
+2026-03-20 20:19:14 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:19:17 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774027157816.png
+2026-03-20 20:25:39 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:25:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:25:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:25:42 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:25:42 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:25:43 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:25:43 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:25:43 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:25:43 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:25:43 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:25:44 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:25:44 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:25:44 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:25:44 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:25:44 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:25:44 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:25:44 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:25:45 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:25:48 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774027548445.png
+2026-03-20 20:28:55 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:28:55 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:28:55 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:28:57 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:28:57 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:28:57 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:28:57 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:28:58 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:28:58 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:28:58 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:28:58 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:28:58 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:28:58 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:28:58 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:28:58 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:28:58 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:28:58 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:28:59 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:28:59 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774027739795.png
+2026-03-20 20:29:43 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:29:43 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:29:43 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:29:44 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:29:45 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:29:45 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:29:45 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:29:46 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:29:46 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:29:46 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:29:46 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:29:46 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:29:46 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:29:46 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:29:46 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:29:46 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:29:47 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:29:47 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:29:48 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774027788146.png
+2026-03-20 20:30:29 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:30:29 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:30:29 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:30:31 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:30:31 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:30:31 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:30:31 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:30:31 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:30:32 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:30:32 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:30:32 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:30:32 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:30:32 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:30:32 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:30:32 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:30:32 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:30:32 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:30:33 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:30:33 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774027833687.png
+2026-03-20 20:32:34 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:32:35 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:32:35 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:32:36 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:32:36 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:32:37 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:32:37 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:32:37 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:32:37 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:32:38 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:32:38 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:32:38 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:32:38 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:32:38 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:32:38 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:32:38 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:32:38 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:32:39 [main] INFO  assertions.AuthAssertions - Доступные логины: [[[ChromeDriver: chrome on windows (137696f39b0daef4e0218be901e5dbc2)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (137696f39b0daef4e0218be901e5dbc2)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (137696f39b0daef4e0218be901e5dbc2)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (137696f39b0daef4e0218be901e5dbc2)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (137696f39b0daef4e0218be901e5dbc2)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (137696f39b0daef4e0218be901e5dbc2)] -> xpath: //div[@id='login_credentials']//br]]
+2026-03-20 20:32:39 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774027959820.png
+2026-03-20 20:33:53 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:33:53 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:33:53 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:33:55 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:33:55 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:33:55 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:33:55 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:33:56 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:33:56 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:33:56 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:33:56 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:33:56 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:33:56 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:33:56 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:33:56 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:33:56 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:33:57 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:33:57 [main] INFO  assertions.AuthAssertions - Доступные логины: [, , , , , ]
+2026-03-20 20:33:58 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028038080.png
+2026-03-20 20:39:37 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:39:38 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:39:38 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:39:39 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:39:39 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:39:59 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028399922.png
+2026-03-20 20:40:15 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:40:15 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:40:15 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:40:17 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:40:17 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:40:37 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028437776.png
+2026-03-20 20:40:52 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:40:52 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:40:52 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:40:54 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:40:54 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:41:14 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028474322.png
+2026-03-20 20:42:25 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:42:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:42:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:42:27 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:42:27 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:42:47 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028567546.png
+2026-03-20 20:44:16 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:44:17 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:44:17 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:44:18 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:44:19 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:44:39 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028679261.png
+2026-03-20 20:45:25 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:45:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:45:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:45:27 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:45:27 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:45:47 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774028747559.png
+2026-03-20 20:49:37 [main] INFO  base.BaseTest - Запуск теста Проверка отображения всех обязательных элементов страницы
+2026-03-20 20:49:37 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:49:37 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:49:39 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:49:39 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:49:40 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:49:43 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\__________________________________________________________1774028983555.png
+2026-03-20 20:49:57 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:49:58 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:49:58 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:49:59 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:49:59 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:50:00 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:50:00 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:50:01 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:50:01 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:50:01 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:50:01 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:50:01 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:50:01 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:50:01 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:50:01 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:50:01 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:50:01 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:50:02 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:50:02 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029002472.png
+2026-03-20 20:52:26 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:52:27 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:52:27 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:52:28 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:52:28 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:52:29 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:52:29 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:52:29 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:52:29 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:52:30 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:52:30 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:52:30 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:52:30 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:52:30 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:52:30 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:52:30 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:52:30 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:52:31 [main] INFO  base.BasePage - Доступные логины перед парсингом: [[[ChromeDriver: chrome on windows (91bd938097eaf9b5befb7c0f84affe8c)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (91bd938097eaf9b5befb7c0f84affe8c)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (91bd938097eaf9b5befb7c0f84affe8c)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (91bd938097eaf9b5befb7c0f84affe8c)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (91bd938097eaf9b5befb7c0f84affe8c)] -> xpath: //div[@id='login_credentials']//br], [[ChromeDriver: chrome on windows (91bd938097eaf9b5befb7c0f84affe8c)] -> xpath: //div[@id='login_credentials']//br]]
+2026-03-20 20:52:31 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:52:31 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029151604.png
+2026-03-20 20:56:48 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 20:56:49 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 20:56:49 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 20:56:50 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 20:56:51 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 20:56:51 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 20:56:51 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 20:56:52 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 20:56:52 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 20:56:52 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 20:56:52 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 20:56:52 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 20:56:52 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 20:56:52 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 20:56:52 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 20:56:53 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 20:56:53 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 20:56:53 [main] INFO  base.BasePage - Доступные логины перед парсингом: [[ChromeDriver: chrome on windows (6f141054600dda21cb0cfdda4f43f84d)] -> xpath: //div[@id='login_credentials']//br]
+2026-03-20 20:56:53 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 20:56:53 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029413908.png
+2026-03-20 21:00:06 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:00:06 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:00:06 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:00:08 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:00:08 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:00:08 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 21:00:08 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 21:00:09 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 21:00:09 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 21:00:09 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 21:00:09 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 21:00:09 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 21:00:09 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 21:00:09 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 21:00:09 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 21:00:09 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 21:00:10 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 21:00:10 [main] INFO  base.BasePage - Доступные логины перед парсингом: [[ChromeDriver: chrome on windows (17eed3793a77ef9733070c9d88ad0089)] -> xpath: //div[@id='login_credentials']//br]
+2026-03-20 21:00:10 [main] INFO  base.BasePage - Without Header: 
+2026-03-20 21:00:10 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 21:00:10 [main] INFO  base.BasePage - Without Header: Password for all users:
+secret_sauce
+2026-03-20 21:00:10 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029610839.png
+2026-03-20 21:01:04 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:01:04 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:01:04 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:01:06 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:01:06 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:01:06 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 21:01:06 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 21:01:07 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 21:01:07 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 21:01:07 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 21:01:07 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 21:01:07 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 21:01:07 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 21:01:07 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 21:01:07 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 21:01:07 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 21:01:07 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 21:01:08 [main] INFO  base.BasePage - Доступные логины перед парсингом: [[ChromeDriver: chrome on windows (5f63aa8c1794491779f3d658706219bf)] -> xpath: //div[@id='login_credentials']//br]
+2026-03-20 21:01:08 [main] INFO  base.BasePage - Full Text: 
+2026-03-20 21:01:08 [main] INFO  base.BasePage - Without Header: 
+2026-03-20 21:01:08 [main] INFO  assertions.AuthAssertions - Доступные логины: []
+2026-03-20 21:01:08 [main] INFO  base.BasePage - Full Text: Password for all users:
+secret_sauce
+2026-03-20 21:01:08 [main] INFO  base.BasePage - Without Header: Password for all users:
+secret_sauce
+2026-03-20 21:01:08 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029668547.png
+2026-03-20 21:03:26 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:03:26 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:03:26 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:03:28 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:03:28 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:03:48 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029828545.png
+2026-03-20 21:04:03 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:04:03 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:04:03 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:04:05 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:04:05 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:04:25 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029865639.png
+2026-03-20 21:04:41 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:04:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:04:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:04:43 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:04:43 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:05:03 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774029903544.png
+2026-03-20 21:28:19 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:28:20 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:28:20 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:28:21 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:28:21 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:28:22 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 21:28:22 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 21:28:22 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 21:28:22 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 21:28:22 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 21:28:23 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 21:28:23 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 21:28:23 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 21:28:23 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 21:28:23 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 21:28:23 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 21:28:23 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 21:28:24 [main] INFO  base.BasePage - Доступные логины перед парсингом: [[ChromeDriver: chrome on windows (6ad1af689a1f057a1812e28f93b023a1)] -> xpath: //div[@id='login_credentials']]
+2026-03-20 21:28:24 [main] INFO  base.BasePage - Full Text: Accepted usernames are:
+standard_user
+locked_out_user
+problem_user
+performance_glitch_user
+error_user
+visual_user
+
+2026-03-20 21:28:24 [main] INFO  base.BasePage - Without Header: standard_user
+locked_out_user
+problem_user
+performance_glitch_user
+error_user
+visual_user
+2026-03-20 21:28:24 [main] INFO  assertions.AuthAssertions - Доступные логины: [standard_user, locked_out_user, problem_user, performance_glitch_user, error_user, visual_user]
+2026-03-20 21:28:24 [main] INFO  base.BasePage - Full Text: Password for all users:
+secret_sauce
+2026-03-20 21:28:24 [main] INFO  base.BasePage - Without Header: Password for all users:
+secret_sauce
+2026-03-20 21:28:24 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774031304423.png
+2026-03-20 21:29:41 [main] INFO  base.BaseTest - Запуск теста loginAfterLogout_ShouldLoginAndLogoutCorrectly()
+2026-03-20 21:29:42 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 21:29:42 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 21:29:44 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 21:29:44 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 21:29:44 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 21:29:44 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 21:29:45 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 21:29:45 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 21:29:45 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-03-20 21:29:45 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-03-20 21:29:45 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-03-20 21:29:45 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-03-20 21:29:45 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-03-20 21:29:45 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-03-20 21:29:45 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-03-20 21:29:45 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-03-20 21:29:46 [main] INFO  base.BasePage - Доступные логины перед парсингом: [[ChromeDriver: chrome on windows (7e5c18fe786f70ceb23d959cc5ef92f1)] -> xpath: //div[@id='login_credentials']]
+2026-03-20 21:29:46 [main] INFO  base.BasePage - Full Text: Accepted usernames are:
+standard_user
+locked_out_user
+problem_user
+performance_glitch_user
+error_user
+visual_user
+
+2026-03-20 21:29:46 [main] INFO  base.BasePage - Without Header: standard_user
+locked_out_user
+problem_user
+performance_glitch_user
+error_user
+visual_user
+2026-03-20 21:29:46 [main] INFO  assertions.AuthAssertions - Доступные логины: [standard_user, locked_out_user, problem_user, performance_glitch_user, error_user, visual_user]
+2026-03-20 21:29:46 [main] INFO  base.BasePage - Full Text: Password for all users:
+secret_sauce
+2026-03-20 21:29:46 [main] INFO  base.BasePage - Without Header: Password for all users:
+secret_sauce
+2026-03-20 21:29:46 [main] INFO  assertions.AuthAssertions - Доступные учетные данные корректно отображены
+2026-03-20 21:29:46 [main] INFO  assertions.AuthAssertions - Пользователь успешно разлогинен
+2026-03-20 21:29:46 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\loginAfterLogout_ShouldLoginAndLogoutCorrectly___1774031386529.png
+2026-03-20 23:39:49 [main] INFO  base.BaseTest - Запуск теста Проверка авторизации заблокированного пользователя
+2026-03-20 23:39:50 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:39:50 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:39:51 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:39:51 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:39:52 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:39:52 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-03-20 23:39:52 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:39:52 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 23:39:52 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-03-20 23:39:53 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:39:53 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 23:39:53 [main] WARN  assertions.AuthAssertions - Заблокированный пользователь не может войти в систему
+2026-03-20 23:39:53 [main] INFO  base.BaseAssertions - URL остался неизменным: https://www.saucedemo.com/
+2026-03-20 23:39:53 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\___________________________________________________1774039193893.png
+2026-03-20 23:39:54 [main] INFO  base.BaseTest - Запуск теста [1] standard_user, 
+2026-03-20 23:39:54 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:39:54 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:39:55 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:39:55 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:39:56 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:39:56 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 23:39:56 [main] INFO  base.BasePage - Ввод текста '' в элемент: By.id: password
+2026-03-20 23:39:56 [main] INFO  base.BasePage - Обновление страницы
+2026-03-20 23:39:56 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_1__standard_user___1774039196720.png
+2026-03-20 23:39:56 [main] INFO  base.BaseTest - Запуск теста [2] , secret_sauce
+2026-03-20 23:39:56 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:39:56 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:39:57 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:39:57 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:39:58 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:39:58 [main] INFO  base.BasePage - Ввод текста '' в элемент: By.id: user-name
+2026-03-20 23:39:58 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:39:58 [main] INFO  base.BasePage - Обновление страницы
+2026-03-20 23:39:59 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_2____secret_sauce_1774039199068.png
+2026-03-20 23:39:59 [main] INFO  base.BaseTest - Запуск теста [3] standard_user, secret_sauce
+2026-03-20 23:39:59 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:39:59 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:40:00 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:40:00 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:40:01 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:40:01 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 23:40:01 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:40:01 [main] INFO  base.BasePage - Обновление страницы
+2026-03-20 23:40:01 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_3__standard_user__secret_sauce_1774039201658.png
+2026-03-20 23:40:01 [main] INFO  base.BaseTest - Запуск теста Вход с пустыми логином и паролем должен показывать ошибку валидации логина
+2026-03-20 23:40:01 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:40:01 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:40:02 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:40:02 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:40:03 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:40:03 [main] INFO  base.BasePage - Ввод текста '' в элемент: By.id: user-name
+2026-03-20 23:40:03 [main] INFO  base.BasePage - Ввод текста '' в элемент: By.id: password
+2026-03-20 23:40:03 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 23:40:03 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-03-20 23:40:03 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:40:04 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 23:40:04 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\___________________________________________________________________________1774039204218.png
+2026-03-20 23:41:18 [main] INFO  base.BaseTest - Запуск теста Проверка авторизации заблокированного пользователя
+2026-03-20 23:41:19 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:41:19 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:41:20 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:41:20 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:41:21 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:41:21 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-03-20 23:41:21 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:41:21 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 23:41:21 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-03-20 23:41:22 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:41:22 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-03-20 23:41:22 [main] WARN  assertions.AuthAssertions - Заблокированный пользователь не может войти в систему
+2026-03-20 23:41:22 [main] INFO  base.BaseAssertions - URL остался неизменным: https://www.saucedemo.com/
+2026-03-20 23:41:22 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\___________________________________________________1774039282655.png
+2026-03-20 23:41:23 [main] INFO  base.BaseTest - Запуск теста [1] standard_user, 
+2026-03-20 23:41:23 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:41:23 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:41:24 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:41:24 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:41:24 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:41:24 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 23:41:24 [main] INFO  base.BasePage - Ввод текста '' в элемент: By.id: password
+2026-03-20 23:41:25 [main] INFO  base.BasePage - Обновление страницы
+2026-03-20 23:41:25 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_1__standard_user___1774039285349.png
+2026-03-20 23:41:25 [main] INFO  base.BaseTest - Запуск теста [2] , secret_sauce
+2026-03-20 23:41:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:41:25 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:41:26 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:41:26 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:41:27 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:41:27 [main] INFO  base.BasePage - Ввод текста '' в элемент: By.id: user-name
+2026-03-20 23:41:27 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:41:27 [main] INFO  base.BasePage - Обновление страницы
+2026-03-20 23:41:27 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_2____secret_sauce_1774039287683.png
+2026-03-20 23:41:27 [main] INFO  base.BaseTest - Запуск теста [3] standard_user, secret_sauce
+2026-03-20 23:41:27 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 146.0.7680.153 (resolved driver for Chrome 146)
+2026-03-20 23:41:27 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\146.0.7680.153\chromedriver.exe
+2026-03-20 23:41:28 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-03-20 23:41:28 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-03-20 23:41:29 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-03-20 23:41:29 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-03-20 23:41:29 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-03-20 23:41:29 [main] INFO  base.BasePage - Обновление страницы
+2026-03-20 23:41:30 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_3__standard_user__secret_sauce_1774039290158.png
+2026-05-11 14:17:42 [main] INFO  base.BaseTest - Запуск теста Проверка отображения всех обязательных элементов страницы
+2026-05-11 14:17:46 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:17:46 [main] INFO  i.g.bonigarcia.wdm.online.Downloader - Downloading https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.97/win64/chromedriver-win64.zip
+2026-05-11 14:17:49 [main] INFO  i.g.bonigarcia.wdm.online.Downloader - Extracting driver from compressed file chromedriver-win64.zip
+2026-05-11 14:17:50 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:17:52 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:17:52 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:17:55 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:18:04 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\__________________________________________________________1778498284463.png
+2026-05-11 14:31:31 [main] INFO  base.BaseTest - Запуск теста Поля авторизации очищаются после обновления страницы
+2026-05-11 14:31:32 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:31:32 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:31:35 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:31:36 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:31:38 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:31:38 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-05-11 14:31:38 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:31:39 [main] INFO  base.BasePage - Обновление страницы
+2026-05-11 14:31:41 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_____________________________________________________1778499101008.png
+2026-05-11 14:42:14 [main] INFO  base.BaseTest - Запуск теста Успешная авторизация пользователя с валидными логином и паролем
+2026-05-11 14:42:15 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:42:15 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:42:18 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:42:18 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:42:20 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:42:20 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-05-11 14:42:21 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:42:21 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-05-11 14:42:22 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-05-11 14:42:23 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-05-11 14:42:23 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-05-11 14:42:23 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-05-11 14:42:24 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\________________________________________________________________1778499743957.png
+2026-05-11 14:42:24 [main] INFO  base.BaseTest - Запуск теста [1] 1
+2026-05-11 14:42:24 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:42:24 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:42:26 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:42:26 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:42:29 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:42:29 [main] INFO  base.BasePage - Ввод текста '<' в элемент: By.id: user-name
+2026-05-11 14:42:29 [main] ERROR io.qameta.allure.util.NamingUtils - Could not find parameter element
+2026-05-11 14:42:29 [main] ERROR io.qameta.allure.util.NamingUtils - Could not find parameter element
+2026-05-11 14:42:33 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_1__1_1778499753047.png
+2026-05-11 14:42:33 [main] INFO  base.BaseTest - Запуск теста [2] 15
+2026-05-11 14:42:33 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:42:33 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:42:34 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:42:34 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:42:36 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:42:36 [main] INFO  base.BasePage - Ввод текста 'zC(5a%(VRAGI7tp' в элемент: By.id: user-name
+2026-05-11 14:42:37 [main] ERROR io.qameta.allure.util.NamingUtils - Could not find parameter element
+2026-05-11 14:42:37 [main] ERROR io.qameta.allure.util.NamingUtils - Could not find parameter element
+2026-05-11 14:42:40 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_2__15_1778499760639.png
+2026-05-11 14:42:41 [main] INFO  base.BaseTest - Запуск теста [3] 30
+2026-05-11 14:42:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:42:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:42:42 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:42:42 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:42:44 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:42:44 [main] INFO  base.BasePage - Ввод текста 'ygdw@85C#QeHUy^pg5CtwMACbJuBMB' в элемент: By.id: user-name
+2026-05-11 14:42:45 [main] ERROR io.qameta.allure.util.NamingUtils - Could not find parameter element
+2026-05-11 14:42:45 [main] ERROR io.qameta.allure.util.NamingUtils - Could not find parameter element
+2026-05-11 14:42:48 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_3__30_1778499768440.png
+2026-05-11 14:42:48 [main] INFO  base.BaseTest - Запуск теста Авторизация при необычно долгой загрузке страницы
+2026-05-11 14:42:48 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:42:48 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:42:50 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:42:50 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:42:53 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:42:53 [main] INFO  base.BasePage - Ввод текста 'performance_glitch_user' в элемент: By.id: user-name
+2026-05-11 14:42:54 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:42:54 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-05-11 14:43:00 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-05-11 14:43:00 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-05-11 14:43:00 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-05-11 14:43:00 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-05-11 14:43:00 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\__________________________________________________1778499780575.png
+2026-05-11 14:43:01 [main] INFO  base.BaseTest - Запуск теста Логин после разлогина - корректный перезаход в систему
+2026-05-11 14:43:01 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:43:01 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:43:02 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:43:02 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:43:04 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:43:04 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-05-11 14:43:05 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:43:05 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-05-11 14:43:06 [main] DEBUG assertions.AuthAssertions - HeaderComponent или MainPage не найдены, используется упрощенная проверка
+2026-05-11 14:43:06 [main] INFO  base.BaseAssertions - URL содержит 'inventory.html'
+2026-05-11 14:43:06 [main] INFO  assertions.AuthAssertions - Пользователь авторизован, перешел на главную страницу
+2026-05-11 14:43:06 [main] INFO  assertions.AuthAssertions - Пользователь успешно авторизован
+2026-05-11 14:43:06 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: react-burger-menu-btn
+2026-05-11 14:43:06 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: logout_sidebar_link
+2026-05-11 14:43:06 [main] INFO  base.BaseAssertions - URL изменился с содержания 'inventory.html' на 'https://www.saucedemo.com/'
+2026-05-11 14:43:06 [main] INFO  base.BaseAssertions - URL содержит '/'
+2026-05-11 14:43:07 [main] INFO  assertions.AuthAssertions - Доступные логины: [standard_user, locked_out_user, problem_user, performance_glitch_user, error_user, visual_user]
+2026-05-11 14:43:08 [main] INFO  assertions.AuthAssertions - Доступные учетные данные корректно отображены
+2026-05-11 14:43:08 [main] INFO  assertions.AuthAssertions - Пользователь успешно разлогинен
+2026-05-11 14:43:08 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_______________________________________________________1778499788521.png
+2026-05-11 14:43:41 [main] INFO  base.BaseTest - Запуск теста Проверка авторизации заблокированного пользователя
+2026-05-11 14:43:41 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:43:42 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:43:45 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:43:45 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:43:47 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:43:47 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-05-11 14:43:48 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:43:49 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-05-11 14:43:49 [main] INFO  base.BasePage - Ввод текста 'locked_out_user' в элемент: By.id: user-name
+2026-05-11 14:43:49 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:43:50 [main] INFO  base.BasePage - Клик по элементу с JS: By.id: login-button
+2026-05-11 14:43:51 [main] WARN  assertions.AuthAssertions - Заблокированный пользователь не может войти в систему
+2026-05-11 14:43:51 [main] INFO  base.BaseAssertions - URL остался неизменным: https://www.saucedemo.com/
+2026-05-11 14:43:52 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\___________________________________________________1778499831991.png
+2026-05-11 14:43:52 [main] INFO  base.BaseTest - Запуск теста Поля авторизации очищаются после обновления страницы
+2026-05-11 14:43:52 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 148.0.7778.97 (resolved driver for Chrome 148)
+2026-05-11 14:43:52 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\dalum\.cache\selenium\chromedriver\win64\148.0.7778.97\chromedriver.exe
+2026-05-11 14:43:54 [main] INFO  base.BaseTest - Драйвер инициализирован
+2026-05-11 14:43:54 [main] INFO  base.BaseTest - Открытие страницы: https://www.saucedemo.com/
+2026-05-11 14:43:56 [main] INFO  base.BaseTest - Текущий URL: https://www.saucedemo.com/
+2026-05-11 14:43:56 [main] INFO  base.BasePage - Ввод текста 'standard_user' в элемент: By.id: user-name
+2026-05-11 14:43:56 [main] INFO  base.BasePage - Ввод текста 'secret_sauce' в элемент: By.id: password
+2026-05-11 14:43:57 [main] INFO  base.BasePage - Обновление страницы
+2026-05-11 14:43:58 [main] INFO  base.BaseTest - Скриншот сохранён: C:\Users\dalum\IdeaProjects\saucedemo\target\screenshots\_____________________________________________________1778499838018.png
