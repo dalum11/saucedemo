@@ -1,17 +1,19 @@
-package base;
+package core.assertions;
 
-import config.TestConfig;
+import core.config.TestConfig;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.Data;
+import pages.auth.LoginPageAssertions;
 
 import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public abstract class BaseAssertions {
 
@@ -204,6 +206,41 @@ public abstract class BaseAssertions {
                 .as("Размер списка")
                 .hasSize(expectedSize);
         log.info("Размер списка соответствует: {}", expectedSize);
+    }
+
+    public void assertElementWidthPercent(WebDriver driver, WebElement element, int expectedWidth) {
+        String actualWidth = getElementWidthInPercent(driver, element);
+
+        assertTrue(actualWidth.contains(expectedWidth + ""),
+                "Ожидалось " + expectedWidth + ", получилось: " + actualWidth);
+    }
+
+    private String getElementWidthInPercent(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String width = (String) js.executeScript(
+                "var target = arguments[0];" +
+                        "var sheets = document.styleSheets;" +
+                        "for (var i = 0; i < sheets.length; i++) {" +
+                        "  try {" +
+                        "    var sheet = sheets[i];" +
+                        "    var rules = sheet.cssRules || sheet.rules;" +
+                        "    if (rules) {" +
+                        "      for (var j = 0; j < rules.length; j++) {" +
+                        "        var rule = rules[j];" +
+                        "        if (rule.selectorText && target.matches(rule.selectorText)) {" +
+                        "          if (rule.style && rule.style.width) {" +
+                        "            return rule.style.width;" +
+                        "          }" +
+                        "        }" +
+                        "      }" +
+                        "    }" +
+                        "  } catch (e) {" +
+                        "  }" +
+                        "}" +
+                        "return null;",
+                element
+        );
+        return width;
     }
 
     public void assertElementsCount(List<WebElement> elements, int expectedCount) {

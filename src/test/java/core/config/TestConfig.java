@@ -1,10 +1,8 @@
-package config;
+package core.config;
 
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,10 +25,9 @@ public class TestConfig {
                 System.getenv("BASE_URL") != null ? System.getenv("BASE_URL") : BASE_URL);
     }
 
-    public static ChromeOptions getChromeOptions() {
+    public static ChromeOptions getChromeOptions(BrowserOrientation orientation) {
         ChromeOptions options = new ChromeOptions();
 
-        // Комбинация всего
         options.addArguments("--incognito");
         options.addArguments("--disable-save-password-bubble");
         options.addArguments("--disable-features=PasswordLeakDetection,SavePassword");
@@ -40,6 +37,18 @@ public class TestConfig {
         prefs.put("profile.password_manager_enabled", false);
         prefs.put("profile.password_manager_leak_detection.enabled", false);
         options.setExperimentalOption("prefs", prefs);
+
+        switch (orientation) {
+            case MB:
+                options.addArguments("--window-size=320,568");
+                break;
+            case DESKTOP:
+                options.addArguments("--window-size=1920,1080");
+                break;
+            case STANDARD:
+                options.addArguments("--window-size=1440,1920");
+                break;
+        }
 
         return options;
     }

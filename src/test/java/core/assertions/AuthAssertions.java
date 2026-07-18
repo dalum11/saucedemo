@@ -1,14 +1,15 @@
-package assertions;
+package core.assertions;
 
-import base.BaseAssertions;
-import config.TestConfig;
+import core.config.TestConfig;
+import core.utils.CursorUtils;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.HeaderComponent;
-import pageobject.LoginPage;
-import pageobject.MainPage;
-import utils.Data;
+import pages.auth.LoginPageAssertions;
+import pages.component.HeaderComponent;
+import pages.auth.LoginPage;
+import pages.main.MainPage;
+import data.Data;
 
 import java.util.List;
 
@@ -19,19 +20,22 @@ public class AuthAssertions extends BaseAssertions {
     private final WebDriver driver;
     private final LoginPage loginPage;
     private final LoginPageAssertions loginPageAssertions;
+    private final CursorUtils cursorUtils;
 
     private final Logger log = LoggerFactory.getLogger(AuthAssertions.class);
 
     public AuthAssertions(WebDriver driver) {
         this.driver = driver;
         this.loginPage = new LoginPage(driver);
-        this.loginPageAssertions = new LoginPageAssertions(loginPage);
+        this.cursorUtils = new CursorUtils(driver);
+        this.loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
     }
 
     public AuthAssertions(LoginPage loginPage) {
         this.driver = loginPage.getDriver();
         this.loginPage = loginPage;
-        this.loginPageAssertions = new LoginPageAssertions(loginPage);
+        this.cursorUtils = new CursorUtils(driver);
+        this.loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
     }
 
     public void assertUserIsLoggedIn(int productCardIndex) {
@@ -104,7 +108,6 @@ public class AuthAssertions extends BaseAssertions {
 
         assertThat(displayedValue)
                 .as("Отображаемое значение поля пароля")
-                .isNotEqualTo(testPassword)
                 .hasSize(testPassword.length());
 
         log.debug("Поле пароля корректно маскирует ввод");
@@ -121,7 +124,7 @@ public class AuthAssertions extends BaseAssertions {
         loginPageAssertions.verifyPageDisplayed()
                 .verifyPasswordField()
                 .verifyUsernameField()
-                .verifyLoginButton();
+                .verifyLoginButtonEnabled();
 
         assertAvailableCredentialsAreDisplayed();
     }

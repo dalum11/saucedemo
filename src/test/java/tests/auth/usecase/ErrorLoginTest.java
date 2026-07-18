@@ -1,16 +1,17 @@
-package tests.auth;
+package tests.auth.usecase;
 
-import assertions.AuthAssertions;
-import assertions.LoginPageAssertions;
-import base.BaseTest;
-import config.TestConfig;
+import core.assertions.AuthAssertions;
+import core.utils.CursorUtils;
+import pages.auth.LoginPageAssertions;
+import tests.common.BaseTest;
+import core.config.TestConfig;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pageobject.LoginPage;
-import utils.Data;
-import utils.TestUtils;
+import pages.auth.LoginPage;
+import data.Data;
+import core.utils.TestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,6 +24,7 @@ public class ErrorLoginTest extends BaseTest {
 
     private LoginPage loginPage;
     private AuthAssertions authAssertions;
+    private CursorUtils cursorUtils;
 
     @BeforeEach
     @Step("Подготовка теста")
@@ -30,6 +32,7 @@ public class ErrorLoginTest extends BaseTest {
         super.setUp(testInfo);
         loginPage = new LoginPage(driver);
         authAssertions = new AuthAssertions(loginPage);
+        cursorUtils = new CursorUtils(driver);
     }
 
     @Test
@@ -133,7 +136,7 @@ public class ErrorLoginTest extends BaseTest {
         loginPage.enterPassword(Data.Login.VALID_PASSWORD);
         loginPage.refresh();
 
-        LoginPageAssertions loginPageAssertions = new LoginPageAssertions(loginPage);
+        LoginPageAssertions loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
         loginPageAssertions.assertCredentialsIsEmpty();
     }
 }

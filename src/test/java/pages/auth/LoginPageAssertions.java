@@ -1,18 +1,24 @@
-package assertions;
+package pages.auth;
 
-import base.BaseAssertions;
+import core.assertions.BaseAssertions;
+import core.utils.CursorUtils;
 import org.openqa.selenium.WebDriver;
-import pageobject.LoginPage;
+import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginPageAssertions extends BaseAssertions{
 
     private final LoginPage loginPage;
+    private final WebDriver driver;
+    private final CursorUtils cursorUtils;
 
-    public LoginPageAssertions(LoginPage loginPage) {
+    public LoginPageAssertions(LoginPage loginPage, WebDriver driver, CursorUtils cursorUtils) {
         this.loginPage = loginPage;
+        this.driver = driver;
+        this.cursorUtils = cursorUtils;
     }
 
     public LoginPageAssertions verifyPageDisplayed() {
@@ -30,6 +36,16 @@ public class LoginPageAssertions extends BaseAssertions{
         assertThat(loginPage.isLoginDisplayed()).isTrue();
         assertThat(loginPage.isLoginEnabled()).isTrue();
         assertThat(loginPage.getLoginPlaceholder()).isEqualTo("Username");
+        return this;
+    }
+
+    public LoginPageAssertions verifyUsernameFieldText(String text) {
+        assertThat(loginPage.getLoginText()).isNotBlank().isEqualTo(text);
+        return this;
+    }
+
+    public LoginPageAssertions verifyPasswordFieldText(String text) {
+        assertThat(loginPage.getPasswordText()).isNotBlank().isEqualTo(text);
         return this;
     }
 
@@ -53,7 +69,7 @@ public class LoginPageAssertions extends BaseAssertions{
         return this;
     }
 
-    public LoginPageAssertions verifyLoginButton() {
+    public LoginPageAssertions verifyLoginButtonEnabled() {
         assertThat(loginPage.isLoginButtonDisplayed())
                 .as("Кнопка входа должна отображаться")
                 .isTrue();
@@ -68,7 +84,22 @@ public class LoginPageAssertions extends BaseAssertions{
         return this;
     }
 
-    public LoginPageAssertions assertLoginIsEmpty() {
+    public LoginPageAssertions verifyLoginButtonDisabled() {
+        assertThat(loginPage.isLoginButtonDisplayed())
+                .as("Кнопка входа должна отображаться")
+                .isTrue();
+
+        assertThat(loginPage.isLoginButtonEnabled())
+                .as("Кнопка входа не должна быть доступна")
+                .isFalse();
+
+        assertThat(loginPage.getLoginButtonText())
+                .as("Текст кнопки входа")
+                .isEqualTo("Login");
+        return this;
+    }
+
+    public LoginPageAssertions assertUsernameIsEmpty() {
         assertThat(loginPage.getLoginText()).as("Логин").isEmpty();
         return this;
     }
@@ -79,6 +110,28 @@ public class LoginPageAssertions extends BaseAssertions{
     }
 
     public LoginPageAssertions assertCredentialsIsEmpty() {
-        return assertPasswordIsEmpty().assertPasswordIsEmpty();
+        return assertPasswordIsEmpty().assertUsernameIsEmpty();
+    }
+
+    public LoginPageAssertions assertLogoIsCentered() {
+        WebElement logo = loginPage.getLogo();
+        String marginLeft = logo.getCssValue("margin-left");
+        String marginRight = logo.getCssValue("margin-right");
+        assertThat(marginLeft).isEqualTo(marginRight);
+        return this;
+    }
+
+    public LoginPageAssertions assertUsernameFieldWidthInPercent() {
+        assertElementWidthPercent(driver, loginPage.getUsername(), 100);
+        return this;
+    }
+
+    public LoginPageAssertions assertPasswordFieldWidthInPercent() {
+        assertElementWidthPercent(driver, loginPage.getPassword(), 100);
+        return this;
+    }
+
+    public LoginPageAssertions assertLoginFieldsWidthInPercent() {
+        return assertUsernameFieldWidthInPercent().assertPasswordFieldWidthInPercent();
     }
 }

@@ -1,6 +1,6 @@
-package base;
+package pages.base;
 
-import config.TestConfig;
+import core.config.TestConfig;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;

@@ -1,11 +1,12 @@
-package pageobject;
+package pages.auth;
 
-import base.BasePage;
+import core.utils.CursorUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pages.base.BasePage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 public class LoginPage extends BasePage {
 
     private static final By PAGE_TITLE = By.className("login_logo");
-    private static final By LOGIN = By.id("user-name");
+    private static final By USERNAME = By.id("user-name");
     private static final By PASSWORD = By.id("password");
     private static final By LOGIN_BUTTON = By.id("login-button");
     private static final By AVAILABLE_USERNAMES = By.xpath("//div[@id='login_credentials']");
@@ -23,6 +24,26 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Step("Получение элемента Username")
+    public WebElement getUsername() {
+        return findElement(USERNAME);
+    }
+
+    @Step("Получение элемента Password")
+    public WebElement getPassword() {
+        return findElement(PASSWORD);
+    }
+
+    @Step("Получение элемента LoginButton")
+    public WebElement getLoginButton() {
+        return findElement(LOGIN_BUTTON);
+    }
+
+    @Step("Получение элемента Logo")
+    public WebElement getLogo() {
+        return findElement(PAGE_TITLE);
     }
 
     @Step("Получение заголовка страницы")
@@ -37,17 +58,17 @@ public class LoginPage extends BasePage {
 
     @Step("Получение placeholder поля логина")
     public String getLoginPlaceholder() {
-        return getPlaceholder(LOGIN);
+        return getPlaceholder(USERNAME);
     }
 
     @Step("Проверка доступности поля логина")
     public boolean isLoginEnabled() {
-        return isEnabled(LOGIN);
+        return isEnabled(USERNAME);
     }
 
     @Step("Проверка отображения поля логина")
     public boolean isLoginDisplayed() {
-        return isDisplayed(LOGIN);
+        return isDisplayed(USERNAME);
     }
 
     @Step("Получение placeholder поля пароля")
@@ -104,7 +125,7 @@ public class LoginPage extends BasePage {
 
     @Step("Ввод логина: {username}")
     public void enterLogin(String username) {
-        typeText(LOGIN, username);
+        typeText(USERNAME, username);
     }
 
     @Step("Ввод пароля: {password}")
@@ -126,8 +147,8 @@ public class LoginPage extends BasePage {
 
     @Step("Очистка полей ввода")
     public void clearFields() {
-        findElement(LOGIN).clear();
-        findElement(LOGIN).clear();
+        findElement(USERNAME).clear();
+        findElement(USERNAME).clear();
     }
 
     @Step("Проверка видимости сообщения об ошибке")
@@ -151,12 +172,12 @@ public class LoginPage extends BasePage {
 
     @Step("Получение текста логина")
     public String getLoginText() {
-        return findElement(LOGIN).getText();
+        return getValue(USERNAME);
     }
 
     @Step("Получение текста пароля")
     public String getPasswordText() {
-        return findElement(PASSWORD).getText();
+        return getValue(PASSWORD);
     }
 
     @Step("Получение текста ошибки авторизации")
@@ -177,5 +198,25 @@ public class LoginPage extends BasePage {
     @Step("Получение маскированного пароля")
     public String getMaskedPassword() {
         return getValue(PASSWORD);
+    }
+
+    @Step("Наведение курсора на поле Username")
+    public void hoverOverUsernameField() {
+        new CursorUtils(driver).hoverOverElement(findElement(USERNAME));
+    }
+
+    @Step("Наведение курсора на поле Password")
+    public void hoverOverPasswordField() {
+        new CursorUtils(driver).hoverOverElement(findElement(PASSWORD));
+    }
+
+    @Step("Наведение курсора на кнопку Login")
+    public void hoverOverLoginButton() {
+        new CursorUtils(driver).hoverOverElement(findElement(LOGIN_BUTTON));
+    }
+
+    @Step("Нажатие на поле Username")
+    public void clickOnUsernameField() {
+        click(USERNAME);
     }
 }

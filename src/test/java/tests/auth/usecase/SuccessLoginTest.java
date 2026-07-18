@@ -1,15 +1,15 @@
-package tests.auth;
+package tests.auth.usecase;
 
-import assertions.AuthAssertions;
-import base.BaseTest;
+import core.assertions.AuthAssertions;
+import tests.common.BaseTest;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pageobject.LoginPage;
-import pageobject.MainPage;
-import utils.Data;
-import utils.TestUtils;
+import pages.auth.LoginPage;
+import pages.main.MainPage;
+import data.Data;
+import core.utils.TestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,7 +26,7 @@ public class SuccessLoginTest extends BaseTest {
 
     @BeforeEach
     @Step("Подготовка теста")
-    protected void setUp(TestInfo testInfo) {
+    protected void setUp(TestInfo testInfo)  {
         super.setUp(testInfo);
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
