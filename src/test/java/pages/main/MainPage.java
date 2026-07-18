@@ -1,12 +1,12 @@
-package pageobject;
+package pages.main;
 
-import base.BasePage;
 import data.ProductCardModel;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utils.TestUtils;
+import core.utils.TestUtils;
+import pages.base.BasePage;
 
 import java.math.BigDecimal;
 import java.util.List;

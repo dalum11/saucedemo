@@ -17,7 +17,7 @@
     </appender>
 
     <!-- Аппендер для HTML отчета (для Allure) -->
-    <appender name="ALLURE" class="config.AllureLogAppender"/>
+    <appender name="ALLURE" class="core.listeners.AllureLogAppender"/>
 
     <!-- Корневой логгер -->
     <root level="INFO">
@@ -27,8 +27,8 @@
     </root>
 
     <!-- Уровни логирования для разных пакетов -->
-    <logger name="config" level="DEBUG"/>
-    <logger name="pageobject" level="DEBUG"/>
+    <logger name="core.config" level="DEBUG"/>
+    <logger name="pages" level="DEBUG"/>
     <logger name="assertions" level="DEBUG"/>
     <logger name="tests" level="INFO"/>
 

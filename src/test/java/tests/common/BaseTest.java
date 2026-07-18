@@ -1,6 +1,8 @@
-package base;
+package tests.common;
 
-import config.TestConfig;
+import core.annotations.TestResolution;
+import core.config.BrowserOrientation;
+import core.config.TestConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit5.AllureJunit5;
@@ -25,6 +27,8 @@ public abstract class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected JavascriptExecutor jsExecutor;
+    protected BrowserOrientation browserOrientation;
+
     private Logger log = LoggerFactory.getLogger(BaseTest.class);
 
     @BeforeEach
@@ -32,12 +36,16 @@ public abstract class BaseTest {
     protected void setUp(TestInfo testInfo) {
         log.info("Запуск теста {}", testInfo.getDisplayName());
 
+        this.browserOrientation = testInfo.getTestMethod()
+                        .map(method -> method.getAnnotation(TestResolution.class))
+                        .map(TestResolution::value)
+                        .orElseGet(this::getBrowserOrientation);
+
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = TestConfig.getChromeOptions();
+        ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         jsExecutor = (JavascriptExecutor) driver;
-
         configureDriver();
 
         log.info("Драйвер инициализирован");
@@ -74,11 +82,6 @@ public abstract class BaseTest {
     private void configureDriver() {
         driver.manage().timeouts().pageLoadTimeout(TestConfig.getPageLoadTimeout());
         driver.manage().timeouts().implicitlyWait(TestConfig.getImplicitWait());
-
-        if (!TestConfig.isHeadless()) {
-            driver.manage().window().maximize();
-        }
-
         driver.manage().deleteAllCookies();
     }
 
@@ -95,4 +98,11 @@ public abstract class BaseTest {
         open(TestConfig.getBaseUrl());
     }
 
+    protected BrowserOrientation  getBrowserOrientation() {
+        return browserOrientation;
+    }
+
+    protected String getOrientationProperty() {
+        return System.getProperty("browser.resolution");
+    }
 }
