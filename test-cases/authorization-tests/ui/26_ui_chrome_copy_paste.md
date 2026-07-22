@@ -27,5 +27,5 @@
 | 4          | Очистить поле Password и нажать Ctrl + V                 | * Поле заполнено значением Password<br/>* Текст отображается, маскирован                                 |
 
 ## Связанный автотест
-
+CrossBrowserTest.checkGoogleChromeCopyPaste()
 

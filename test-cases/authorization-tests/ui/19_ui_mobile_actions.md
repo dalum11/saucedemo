@@ -27,4 +27,4 @@
 | 3          | Нажать на кнопку Login                  | * Редирект на /inventory.html<br/>* Страница каталога корректно отображается в мобильном разрешении             |
 
 ## Связанный автотест
-
+LoginPageAdaptiveTest.mobileActions_PageShouldBeInteractive()
