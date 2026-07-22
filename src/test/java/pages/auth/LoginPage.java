@@ -147,8 +147,18 @@ public class LoginPage extends BasePage {
 
     @Step("Очистка полей ввода")
     public void clearFields() {
+        clearUsername();
+        clearPassword();
+    }
+
+    @Step("Очистка логина")
+    public void clearUsername() {
         findElement(USERNAME).clear();
-        findElement(USERNAME).clear();
+    }
+
+    @Step("Очистка пароля")
+    public void clearPassword() {
+        findElement(PASSWORD).clear();
     }
 
     @Step("Проверка видимости сообщения об ошибке")
@@ -171,7 +181,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Получение текста логина")
-    public String getLoginText() {
+    public String getUsernameText() {
         return getValue(USERNAME);
     }
 

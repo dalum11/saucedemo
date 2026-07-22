@@ -10,7 +10,7 @@ public class TestConfig {
     public static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(10);
     public static final Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(20);
     public static final Duration IMPLICIT_WAIT_TIMEOUT = Duration.ofSeconds(3);
-    public static final String DEFAULT_BROWSER = "chrome";
+    public static final Browser DEFAULT_BROWSER = Browser.GOOGLE_CHROME;
     public static final boolean DEFAULT_HEADLESS = false;
     public static final String BASE_URL = "https://www.saucedemo.com/";
 
@@ -52,6 +52,7 @@ public class TestConfig {
 
         return options;
     }
+
 
     public static Duration getTimeout() {
         String timeout = System.getProperty("timeout");

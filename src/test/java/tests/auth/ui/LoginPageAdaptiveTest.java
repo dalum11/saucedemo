@@ -1,6 +1,6 @@
 package tests.auth.ui;
 
-import core.annotations.TestResolution;
+import core.annotations.BrowserResolution;
 import core.assertions.AuthAssertions;
 import core.config.BrowserOrientation;
 import core.utils.CursorUtils;
@@ -15,6 +15,8 @@ import scenario.auth.PerformLoginScenario;
 import tests.common.BaseTest;
 
 @DisplayName("Тесты адаптивности для страницы авторизации")
+@Tag("regression")
+@Tag("ui")
 public class LoginPageAdaptiveTest extends BaseTest {
 
     private LoginPage loginPage;
@@ -41,9 +43,7 @@ public class LoginPageAdaptiveTest extends BaseTest {
     }
 
     @Test
-    @TestResolution(BrowserOrientation.MB)
-    @Tag("regression")
-    @Tag("ui")
+    @BrowserResolution(BrowserOrientation.MB)
     @Step("Проверка отображения формы авторизации в мобильном разрешении")
     @Description("Тест проверет отобржение элементов страницы авторизации в мобильном разрешении")
     @DisplayName("ID 18 - Проверка отображения страницы авторизации в мобильном разрешении")
@@ -56,11 +56,9 @@ public class LoginPageAdaptiveTest extends BaseTest {
     }
 
     @Test
-    @TestResolution(BrowserOrientation.MB)
+    @BrowserResolution(BrowserOrientation.MB)
     @DisplayName("ID 19 - Проверка функциональности элементов страницы в мобильном разрешении")
     @Description("Тест проверяет работу формы авторизации на мобильном разрешении браузера")
-    @Tag("regression")
-    @Tag("ui")
     @Step("Проверка интерактивности формы в мобильно разрешении")
     @Disabled("Баг - кнопка Логин доступна без заполнения всех обязательных полей")
     void mobileActions_PageShouldBeInteractive() {
@@ -68,10 +66,8 @@ public class LoginPageAdaptiveTest extends BaseTest {
     }
 
     @Test
-    @TestResolution(BrowserOrientation.DESKTOP)
+    @BrowserResolution(BrowserOrientation.DESKTOP)
     @Description("Тест проверяет отображение формы авторизации на десктопном разрешении браузера")
-    @Tag("regression")
-    @Tag("ui")
     @Step("Проверка отображения формы в десктопном разрешении")
     @DisplayName("ID 20 - Проверка отображения страницы авторизации в десктопном разрешении")
     void desktopView_ElementsShouldDisplayCorrectly() {
@@ -83,10 +79,8 @@ public class LoginPageAdaptiveTest extends BaseTest {
     }
 
     @Test
-    @TestResolution(BrowserOrientation.DESKTOP)
+    @BrowserResolution(BrowserOrientation.DESKTOP)
     @Description("Тест проверяет интерактивность формы авторизации на десктопном разрешении браузера")
-    @Tag("regression")
-    @Tag("ui")
     @Step("Проверка работы формы в десктопном разрешении")
     @DisplayName("ID 21 - Проверка функциональности элементов страницы в десктопном разрешении")
     @Disabled("Баг - кнопка Логин доступна без заполнения всех обязательных полей")

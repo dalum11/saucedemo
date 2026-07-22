@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 
 public class ClipboardUtils {
@@ -23,5 +24,15 @@ public class ClipboardUtils {
         String os = System.getProperty("os.name").toLowerCase();
         Keys pasteKey = os.contains("mac") ? Keys.COMMAND : Keys.CONTROL;
         element.sendKeys(Keys.chord(pasteKey, "v"));
+    }
+
+    public static String getClipboardContent() {
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        try {
+            return String.valueOf(clipboard.getData(DataFlavor.stringFlavor));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }

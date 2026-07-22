@@ -25,4 +25,4 @@
 | 5          | Проверить инфоблок        | * Инфоблок скроллится<br/>* Текст имеет отступы от краёв                                                |
 
 ## Связанный автотест
-
+LoginPageAdaptiveTest.mobileView_ElementsShouldDisplayCorrectly()

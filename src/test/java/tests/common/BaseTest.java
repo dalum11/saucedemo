@@ -1,6 +1,8 @@
 package tests.common;
 
-import core.annotations.TestResolution;
+import core.annotations.CurrentBrowser;
+import core.annotations.BrowserResolution;
+import core.config.Browser;
 import core.config.BrowserOrientation;
 import core.config.TestConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,6 +30,7 @@ public abstract class BaseTest {
     protected WebDriverWait wait;
     protected JavascriptExecutor jsExecutor;
     protected BrowserOrientation browserOrientation;
+    protected Browser browser;
 
     private Logger log = LoggerFactory.getLogger(BaseTest.class);
 
@@ -37,13 +40,32 @@ public abstract class BaseTest {
         log.info("Запуск теста {}", testInfo.getDisplayName());
 
         this.browserOrientation = testInfo.getTestMethod()
-                        .map(method -> method.getAnnotation(TestResolution.class))
-                        .map(TestResolution::value)
+                        .map(method -> method.getAnnotation(BrowserResolution.class))
+                        .map(BrowserResolution::value)
                         .orElseGet(this::getBrowserOrientation);
 
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
-        driver = new ChromeDriver(options);
+        this.browser = testInfo.getTestMethod()
+                        .map(method -> method.getAnnotation(CurrentBrowser.class))
+                        .map(CurrentBrowser::value)
+                        .orElseGet(this::getBrowser);
+
+        switch (browser) {
+            case GOOGLE_CHROME -> {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
+                driver = new ChromeDriver(options);
+            }
+            case Yandex -> {
+                System.setProperty("webdriver.chrome.driver",
+                        "C:\\Users\\dalum\\Downloads\\yandexdriver-26.6.0.1742-win64\\yandexdriver.exe");
+                ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
+
+                String browserPath = "C:\\Program Files (x86)\\Yandex\\YandexBrowser\\Application\\browser.exe";
+                options.setBinary(browserPath);
+                driver = new ChromeDriver(options);
+            }
+        }
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         jsExecutor = (JavascriptExecutor) driver;
         configureDriver();
@@ -99,10 +121,27 @@ public abstract class BaseTest {
     }
 
     protected BrowserOrientation  getBrowserOrientation() {
-        return browserOrientation;
+        String orientationProperty = System.getProperty("browser.resolution", "DESKTOP");
+        try {
+            BrowserOrientation browserOrientation = BrowserOrientation.valueOf(orientationProperty.toUpperCase());
+            log.info("Разрешение получено из системы: {}", browserOrientation);
+            return browserOrientation;
+        } catch (IllegalArgumentException e) {
+            log.warn("Разрешение не удалось получить из системы, используется DESKTOP");
+            return BrowserOrientation.DESKTOP;
+        }
+
     }
 
-    protected String getOrientationProperty() {
-        return System.getProperty("browser.resolution");
+    protected Browser getBrowser() {
+        String browserProperty = System.getProperty("browser", "GOOGLE_CHROME");
+        try {
+            Browser browser = Browser.valueOf(browserProperty.toUpperCase());
+            log.info("Браузер получен из системы: {}", browser);
+            return browser;
+        } catch (IllegalArgumentException e) {
+            log.warn("Тип браузера не удалось получить из системы, используется GOOGLE_CHROME");
+            return Browser.GOOGLE_CHROME;
+        }
     }
 }

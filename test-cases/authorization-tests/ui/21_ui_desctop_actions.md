@@ -33,4 +33,4 @@
 | 9          | Нажать на кнопку Login                          | * Редирект на /inventory.html<br/>* Страница каталога корректно отображается в десктопном разрешении |
 
 ## Связанный автотест
-
+LoginPageAdaptiveTest.desktopActions_PageShouldBeInteractive()

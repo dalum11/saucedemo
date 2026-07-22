@@ -26,4 +26,4 @@
 | 6          | Проверить инфоблок               | * Данные полностью видны<br/>* Скролл не требуется                                                      |
 
 ## Связанный автотест
-
+LoginPageAdaptiveTest.desktopView_ElementsShouldDisplayCorrectly()

@@ -40,7 +40,7 @@ public class LoginPageAssertions extends BaseAssertions{
     }
 
     public LoginPageAssertions verifyUsernameFieldText(String text) {
-        assertThat(loginPage.getLoginText()).isNotBlank().isEqualTo(text);
+        assertThat(loginPage.getUsernameText()).isNotBlank().isEqualTo(text);
         return this;
     }
 
@@ -100,7 +100,7 @@ public class LoginPageAssertions extends BaseAssertions{
     }
 
     public LoginPageAssertions assertUsernameIsEmpty() {
-        assertThat(loginPage.getLoginText()).as("Логин").isEmpty();
+        assertThat(loginPage.getUsernameText()).as("Логин").isEmpty();
         return this;
     }
 
