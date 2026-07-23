@@ -27,4 +27,4 @@
 | 5          | Повторить шаги 1-4 для поля Password    | Результат соответствует этим шагам                       |
 
 ## Связанный автотест
-
+LoginPageFieldsState.authPage_cleanFields_ShouldCleanCorrectly()

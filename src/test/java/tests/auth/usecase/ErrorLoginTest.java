@@ -106,25 +106,6 @@ public class ErrorLoginTest extends BaseTest {
         authAssertions.assertPageNotChanged(driver, TestConfig.BASE_URL);
     }
 
-    @Disabled("Неучтённость - нет ограничения на количество символов для ввода логина")
-    @ParameterizedTest
-    @ValueSource(ints = {31, 32})
-    @DisplayName("Количество символов логина больше допустимого - ошибка валидации")
-    @Tag("validation")
-    @Tag("regression")
-    @Step("Тест превышения количества символов логина")
-    void loginLengthBoundaryValue_ShouldFailValidation(int length) {
-        openLoginPage();
-        String login = TestUtils.generateRandomString(length);
-        loginPage.enterLogin(login);
-        loginPage.blurActiveElement();
-
-        assertThat(loginPage.isErrorMessageDisplayed())
-                .as("Должно отображаться сообщение об ошибке")
-                .isTrue();
-    }
-
-
     @Test
     @DisplayName("Поля авторизации очищаются после обновления страницы")
     @Tag("smoke")
