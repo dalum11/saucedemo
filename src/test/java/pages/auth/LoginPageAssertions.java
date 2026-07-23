@@ -1,7 +1,9 @@
 package pages.auth;
 
 import core.assertions.BaseAssertions;
+import core.utils.ClipboardUtils;
 import core.utils.CursorUtils;
+import data.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -133,5 +135,75 @@ public class LoginPageAssertions extends BaseAssertions{
 
     public LoginPageAssertions assertLoginFieldsWidthInPercent() {
         return assertUsernameFieldWidthInPercent().assertPasswordFieldWidthInPercent();
+    }
+
+    public LoginPageAssertions assertCrossButtonLoginIsVisible() {
+        assertThat(loginPage.isCrossButtonUsernameDisplayed())
+                .as("Кнопка Крестик должна быть видна в поле Логин")
+                .isTrue();
+        return this;
+    }
+
+    public LoginPageAssertions assertCrossButtonPasswordIsVisible() {
+        assertThat(loginPage.isCrossButtonUsernameDisplayed())
+                .as("Кнопка Крестик должна быть видна в поле Пароль")
+                .isTrue();
+        return this;
+    }
+
+    public LoginPageAssertions assertCrossButtonLoginIsInvisible() {
+        assertThat(loginPage.isCrossButtonUsernameDisplayed())
+                .as("Кнопка Крестик не должна быть видна в поле Логин")
+                .isFalse();
+        return this;
+    }
+
+    public LoginPageAssertions assertCrossButtonPasswordIsInvisible() {
+        assertThat(loginPage.isCrossButtonUsernameDisplayed())
+                .as("Кнопка Крестик не должна быть видна в поле Пароль")
+                .isFalse();
+        return this;
+    }
+
+    public LoginPageAssertions assertUsernameFilled(String username) {
+        return verifyUsernameFieldText(username).assertCrossButtonLoginIsVisible();
+    }
+
+    public LoginPageAssertions assertUsernameCleared() {
+        return assertUsernameIsEmpty().assertCrossButtonLoginIsInvisible();
+    }
+
+    public LoginPageAssertions assertPasswordFilled(String password) {
+        return verifyUsernameFieldText(password).assertCrossButtonPasswordIsInvisible();
+    }
+
+    public LoginPageAssertions assertPasswordCleared() {
+        return assertPasswordIsEmpty().assertCrossButtonLoginIsInvisible();
+    }
+
+    public LoginPageAssertions assertThatCopiedUsernameEqualsExpected(String expectedUsername) {
+        String clipboardUsername = ClipboardUtils.getClipboardContent();
+        assertThat(clipboardUsername)
+                .as("Скопированный логин должен быть равен ожидаемому")
+                .isEqualTo(expectedUsername);
+        return this;
+    }
+
+    public LoginPageAssertions assertThatCopiedPasswordEqualsExpected(String expectedPassword) {
+        String  clipboardPassword = ClipboardUtils.getClipboardContent();
+        assertThat(clipboardPassword)
+                .as("Скопированный пароль должен быть равен ожидаемому")
+                .isEqualTo(expectedPassword);
+        return this;
+    }
+
+    public LoginPageAssertions assertUsernameTextLength(int expectedLength) {
+        assertElementTextLength(loginPage.getUsername(), expectedLength);
+        return this;
+    }
+
+    public LoginPageAssertions assertPasswordTextLength(int expectedLength) {
+        assertElementTextLength(loginPage.getPassword(), expectedLength);
+        return this;
     }
 }

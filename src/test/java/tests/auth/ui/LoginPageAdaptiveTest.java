@@ -5,8 +5,7 @@ import core.assertions.AuthAssertions;
 import core.config.BrowserOrientation;
 import core.utils.CursorUtils;
 import core.utils.KeyboardUtils;
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import pages.auth.LoginPage;
 import pages.auth.LoginPageAssertions;
@@ -17,6 +16,9 @@ import tests.common.BaseTest;
 @DisplayName("Тесты адаптивности для страницы авторизации")
 @Tag("regression")
 @Tag("ui")
+@Epic("Авторизация")
+@Feature("Адаптивность формы авторизации")
+@Severity(SeverityLevel.CRITICAL)
 public class LoginPageAdaptiveTest extends BaseTest {
 
     private LoginPage loginPage;

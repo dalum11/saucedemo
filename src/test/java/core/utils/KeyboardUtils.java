@@ -17,4 +17,8 @@ public class KeyboardUtils {
     public void pressTab() {
         actions.sendKeys(Keys.TAB).perform();
     }
+
+    public void pressBackspace() {
+        actions.sendKeys(Keys.BACK_SPACE).perform();
+    }
 }

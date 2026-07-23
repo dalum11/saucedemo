@@ -23,4 +23,5 @@
 | 3          | В поле Username ввести 31 символ           | * Поле заполнено первыми 30 символами<br/>* Последний символ не отображается |                                                                                                                                   |
 
 ## Связанный автотест
-ErrorLoginTest.loginLengthBoundaryValue_ShouldFailValidation()
+LoginPageFieldsValidation.loginLengthBoundaryValue_ShouldPassValidation()
+LoginPageFieldsValidation.loginLengthBoundaryValue_ShouldFailValidation()

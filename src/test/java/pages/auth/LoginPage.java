@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import pages.base.BasePage;
 
 import java.util.Arrays;
@@ -21,6 +22,9 @@ public class LoginPage extends BasePage {
     private static final By AVAILABLE_USERNAMES = By.xpath("//div[@id='login_credentials']");
     private static final By AVAILABLE_PASSWORDS = By.xpath("//div[@class='login_password']");
     private static final By ERROR_MESSAGE = By.xpath("//div[@class='error-message-container error']//h3");
+    private static final By CROSS_BUTTON_USERNAME = By.xpath("//div[@class='form_group'][1]//svg");
+    private static final By CROSS_BUTTON_PASSWORD = By.xpath("//div[@class='form_group'][2]//svg]");
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -170,6 +174,24 @@ public class LoginPage extends BasePage {
         }
     }
 
+    @Step("Проверка видимости кнопки Крестик поля Логин")
+    public boolean isCrossButtonUsernameDisplayed() {
+        try {
+            return findElement(CROSS_BUTTON_USERNAME).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    @Step("Проверка видимости кнопки Крестик поля Пароль")
+    public boolean isCrossButtonPasswordDisplayed() {
+        try {
+            return findElement(CROSS_BUTTON_PASSWORD).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
     @Step("Блюр элемента {element}")
     public void blurActiveElement() {
         super.blurActiveElement();
@@ -228,5 +250,67 @@ public class LoginPage extends BasePage {
     @Step("Нажатие на поле Username")
     public void clickOnUsernameField() {
         click(USERNAME);
+    }
+
+    @Step("Нажатие на поле Password")
+    public void clickOnPasswordField() {
+        click(PASSWORD);
+    }
+
+    @Step("Нажатие на иконку Глаз")
+    public void clickOnEyeIcon() {
+        int fieldWidth = getPassword().getSize().getWidth();
+        int fieldHeight = getPassword().getSize().getHeight();
+        int xOffset = fieldWidth - 30;
+        int yOffset = fieldHeight / 2;
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(getPassword(), xOffset, yOffset).click().perform();
+    }
+
+    @Step("Нажатие на кнопку Крестик поля Логин")
+    public void clickOnCrossButtonUsername() {
+        click(CROSS_BUTTON_USERNAME);
+    }
+
+    @Step("Нажатие на кнопку Крестик поля Пароль")
+    public void clickOnCrossButtonPassword() {
+        click(CROSS_BUTTON_PASSWORD);
+    }
+
+    @Step("Нажатие на имя пользователя {username} в инфоблоке")
+    public void clickOnUsernameInInfoBlock(String username) {
+        if (!getAvailableUsernames().contains(username)) {
+            throw new IllegalArgumentException("Такого имени пользователя нет");
+        }
+
+        WebElement usernameNeeded = getUsernameInInfoBlock(username);
+        usernameNeeded.click();
+    }
+
+    private WebElement getUsernameInInfoBlock(String username) {
+        int usernameIndex = getAvailableUsernames().indexOf(username);
+        return findElements(AVAILABLE_USERNAMES).get(usernameIndex);
+    }
+
+    @Step("Получение текста имени пользователя из инфоблока")
+    public String getUsernameInInfoBlockText(int usernameIndex) {
+        return getAvailableUsernames().get(usernameIndex);
+    }
+
+    @Step("Нажатие на пароль в инфоблоке")
+    public void clickOnPasswordInInfoBlock() {
+        WebElement passwords = findElement(AVAILABLE_PASSWORDS);
+        passwords.click();
+    }
+
+    @Step("Очистка поля Username через Backspace")
+    public void clearUsernameWithBackspace() {
+        clearFieldWithBackspace(findElement(USERNAME));
+    }
+
+    @Step("Очистка поля Password через Backspace")
+    public void clearPasswordWithBackspace() {
+        clearFieldWithBackspace(findElement(PASSWORD));
     }
 }

@@ -21,5 +21,4 @@
 | 3          | Проверить состояние кнопки Login  | Кнопка неактивна                                                         | 
 
 ## Связанный автотест
-ElementsVisibilityTest.loginPage_shouldDisplayAllRequiredElements()
-
+LoginPageFieldsState.authPage_checkStartFieldsState()

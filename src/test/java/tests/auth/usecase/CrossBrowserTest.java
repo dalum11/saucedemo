@@ -14,8 +14,6 @@ import pages.auth.LoginPageAssertions;
 import pages.main.MainPage;
 import tests.common.BaseTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @DisplayName("Кросс-браузерные тесты авторизации (Хром/Яндекс)")
 @Tag("cross-browser")
 @Tag("smoke")
@@ -56,10 +54,7 @@ public class CrossBrowserTest extends BaseTest {
         String copiedUsername = loginPage.getUsernameText();
         ClipboardUtils.copyToClipboard(copiedUsername);
 
-        String clipboardUsername = ClipboardUtils.getClipboardContent();
-        assertThat(clipboardUsername)
-                .as("Скопированный логин должен быть равен ожидаемому")
-                .isEqualTo(expectedUsername);
+        loginPageAssertions.assertThatCopiedUsernameEqualsExpected(expectedUsername);
 
         loginPage.clearUsername();
         loginPageAssertions.assertUsernameIsEmpty();
@@ -69,10 +64,7 @@ public class CrossBrowserTest extends BaseTest {
         loginPage.enterPassword(expectedPassword);
         ClipboardUtils.copyToClipboard(loginPage.getPasswordText());
 
-        String  clipboardPassword = ClipboardUtils.getClipboardContent();
-        assertThat(clipboardPassword)
-                .as("Скопированный пароль должен быть равен ожидаемому")
-                .isEqualTo(expectedPassword);
+        loginPageAssertions.assertThatCopiedPasswordEqualsExpected(expectedPassword);
 
         loginPage.clearPassword();
         loginPageAssertions.assertPasswordIsEmpty();

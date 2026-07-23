@@ -259,4 +259,10 @@ public abstract class BaseAssertions {
         log.error(message);
         throw new AssertionError(message);
     }
+
+    protected void assertElementTextLength(WebElement element, int expectedLength) {
+        assertThat(element.getAttribute("value").length())
+                .as("Длина текста должна быть " + expectedLength)
+                .isEqualTo(expectedLength);
+    }
 }

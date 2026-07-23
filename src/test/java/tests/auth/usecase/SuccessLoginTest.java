@@ -62,20 +62,6 @@ public class SuccessLoginTest extends BaseTest {
         authAssertions.assertUserIsLoggedIn(productCardIndex);
     }
 
-    @DisplayName("Логин с допустимым количеством символов - должен пройти валидацию")
-    @ParameterizedTest
-    @Tag("smoke")
-    @Tag("regression")
-    @Description("Тест проверяет возможность ввода логина с допустимым количеством символов")
-    @Step("Тест валидной длины логина")
-    @ValueSource(ints = {1, 15, 30})
-    void loginLengthBoundaryValue_ShouldPassValidation(int length) {
-        String login = TestUtils.generateRandomString(length);
-        loginPage.enterLogin(login);
-        loginPage.blurActiveElement();
-        assertThat(loginPage.isErrorMessageDisplayed()).isFalse();
-    }
-
     @Test
     @DisplayName("Логин после разлогина - корректный перезаход в систему")
     @Tag("smoke")

@@ -157,4 +157,12 @@ public abstract class BasePage {
     protected void blurActiveElement() {
         jsExecutor.executeScript("document.activeElement.blur();");
     }
+
+    @Step("Очистка поля {element} через Backspace")
+    protected void clearFieldWithBackspace(WebElement element)  {
+        element.click();
+        while (!element.getAttribute("value").isEmpty()) {
+            element.sendKeys(Keys.BACK_SPACE);
+        }
+    }
 }
