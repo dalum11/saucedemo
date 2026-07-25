@@ -14,6 +14,7 @@ import tests.common.BaseTest;
 @Tag("regression")
 @Tag("ui")
 @Epic("Авторизация")
+@Story("Авторизация пользователя")
 @Feature("Состояние полей формы авторизации")
 public class LoginPageFieldsState extends BaseTest {
 
@@ -50,13 +51,13 @@ public class LoginPageFieldsState extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     void authPage_checkInputAndPasswordMask() {
         loginPage.enterPassword(Data.Login.VALID_PASSWORD);
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(Data.Login.VALID_PASSWORD, Data.Login.VALID_PASSWORD.length());
 
         loginPage.clickOnEyeIcon();
         loginPageAssertions.verifyPasswordFieldText(Data.Login.VALID_PASSWORD);
 
         loginPage.clickOnEyeIcon();
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(Data.Login.VALID_PASSWORD, Data.Login.VALID_PASSWORD.length());
     }
 
     @Test
@@ -110,6 +111,6 @@ public class LoginPageFieldsState extends BaseTest {
         ClipboardUtils.copyToClipboard(loginPage.getAvailablePassword());
         ClipboardUtils.pasteToClipboard(loginPage.getPassword());
         loginPageAssertions.assertThatCopiedPasswordEqualsExpected(neededPassword);
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(neededPassword, neededPassword.length());
     }
 }

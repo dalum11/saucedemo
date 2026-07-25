@@ -3,13 +3,11 @@ package pages.auth;
 import core.assertions.BaseAssertions;
 import core.utils.ClipboardUtils;
 import core.utils.CursorUtils;
-import data.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginPageAssertions extends BaseAssertions{
 
@@ -42,12 +40,12 @@ public class LoginPageAssertions extends BaseAssertions{
     }
 
     public LoginPageAssertions verifyUsernameFieldText(String text) {
-        assertThat(loginPage.getUsernameText()).isNotBlank().isEqualTo(text);
+        assertThat(loginPage.getUsernameText()).isEqualTo(text);
         return this;
     }
 
     public LoginPageAssertions verifyPasswordFieldText(String text) {
-        assertThat(loginPage.getPasswordText()).isNotBlank().isEqualTo(text);
+        assertThat(loginPage.getPasswordText()).isEqualTo(text);
         return this;
     }
 

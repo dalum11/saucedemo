@@ -4,16 +4,12 @@ import core.assertions.AuthAssertions;
 import core.utils.CursorUtils;
 import pages.auth.LoginPageAssertions;
 import tests.common.BaseTest;
-import core.config.TestConfig;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.auth.LoginPage;
 import data.Data;
-import core.utils.TestUtils;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Epic("Авторизация")
 @Feature("Вход")
@@ -25,6 +21,7 @@ public class ErrorLoginTest extends BaseTest {
     private LoginPage loginPage;
     private AuthAssertions authAssertions;
     private CursorUtils cursorUtils;
+    private LoginPageAssertions loginPageAssertions;
 
     @BeforeEach
     @Step("Подготовка теста")
@@ -33,63 +30,103 @@ public class ErrorLoginTest extends BaseTest {
         loginPage = new LoginPage(driver);
         authAssertions = new AuthAssertions(loginPage);
         cursorUtils = new CursorUtils(driver);
-    }
-
-    @Test
-    @DisplayName("Проверка авторизации пользователя с неподходящим паролем")
-    @Description("Тест проверяет, что невалидный пользователь получает сообщение об ошибке вместо авторизации")
-    @Tag("smoke")
-    @Tag("regression")
-    @Step("Тест неуспешной авторизации с невалидным паролем")
-    @Disabled("Баг - одно сообщение об ошибке накладывается на другое")
-    void loginWithWrongPassword_ShouldFailAuth() {
+        loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
         openLoginPage();
-        loginPage.login(Data.Login.VALID_LOGIN, Data.Login.INVALID_PASSWORD);
-
-        authAssertions.assertGettingErrorMessageToLogin(Data.ErrorMessages.INVALID_CREDENTIALS);
-        authAssertions.assertPageNotChanged(driver, TestConfig.BASE_URL);
     }
 
     @Test
-    @DisplayName("Проверка авторизации заблокированного пользователя")
-    @Description("Тест проверяет, что заблокированный пользователь получает сообщение об ошибке вместо авторизации")
+    @DisplayName("ID 10 - Авторизация пользователя, которого нет в системем")
+    @Description("Проверка, что система не позволяет выполнить вход для пользователя, данных которого нет в системе, и \n" +
+            "получение ошибки авторизации")
     @Tag("smoke")
     @Tag("regression")
-    @Step("Тест неуспешной авторизации заблокированного пользователя")
+    @Step("Выполнить авторизацию с данными, которых нет в системе")
+    void loginWithWrongCredentials_ShouldFailAuth() {
+        String invalidLogin = "unknown_user";
+        String invalidPassword = "unknown_password";
+
+        authAssertions.assertCredentialsAreFilled(invalidLogin, invalidPassword);
+        loginPage.clickLogin();
+
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.INVALID_CREDENTIALS);
+    }
+
+    @Test
+    @DisplayName("ID 12 - Попытка авторизации заблокированного пользователя")
+    @Description("Проверка, что заблокированный пользователь не сможет войти в систему и получит соответствующую ошибку")
+    @Tag("smoke")
+    @Tag("regression")
+    @Step("Ввести данные заблокированного пользователя")
     void loginByBlockedUser_ShouldFailAuth() {
-        openLoginPage();
-        loginPage.login(Data.Login.LOCKED_OUT_LOGIN, Data.Login.VALID_PASSWORD);
+        authAssertions.assertCredentialsAreFilled(Data.Login.LOCKED_OUT_LOGIN, Data.Login.VALID_PASSWORD);
+        loginPage.clickLogin();
 
-        authAssertions.assertGettingErrorMessageToLogin(Data.ErrorMessages.BLOCKED_USER);
-        authAssertions.assertPageNotChanged(driver, TestConfig.BASE_URL);
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.BLOCKED_USER);
     }
 
+    @Test
+    @Tag("validation")
+    @Tag("regression")
+    @DisplayName("ID 6 - Пустое поле Username")
+    @Description("Проверка, что нельзя авторизоваться с пустым логином и получение ошибки")
+    @Step("Попытка входа с пустым логином")
+    void loginWithEmptyUsername_ShouldShowUsernameRequiredError() {
+        String expectedPassword = Data.Login.VALID_PASSWORD;
+
+        authAssertions.assertCredentialsAreFilled("", expectedPassword);
+        loginPageAssertions.assertUsernameIsEmpty();
+
+        loginPage.clickLogin();
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.EMPTY_USERNAME);
+    }
+
+    @Tag("validation")
+    @Tag("regression")
+    @ParameterizedTest
     @Disabled("Строка из пробелов считается как введённый логин")
-    @ParameterizedTest(name = "Пустой логин: {0}")
-    @ValueSource(strings = {"", " ", "  "})
-    @Tag("validation")
-    @DisplayName("Получение ошибки при входе с пустым логином")
-    @Step("Тест попытки входа с пустым логином")
-    void loginWithEmptyUsername_ShouldShowUsernameRequiredError(String username) {
-        openLoginPage();
-        loginPage.login(username, Data.Login.VALID_PASSWORD);
+    @ValueSource(strings = {" ", "  ", "   "})
+    @DisplayName("ID 8 - Поле Username заполнено пробелами")
+    @Description("Проверка, что система не позволяет выполнить вход, если поле Username ссодержит только пробелы,\n" +
+            "и отображает сообщение об ошибке валидации")
+    @Step("Попытка входа с логином из пробелов")
+    void loginWithBlankUsername_ShouldShowUsernameRequiredError(String username) {
+        authAssertions.assertCredentialsAreFilled(username, Data.Login.VALID_PASSWORD);
 
-        authAssertions.assertGettingErrorMessageToLogin(Data.ErrorMessages.EMPTY_USERNAME);
-        authAssertions.assertPageNotChanged(driver, TestConfig.BASE_URL);
+        loginPage.clickLogin();
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.EMPTY_USERNAME);
     }
 
-    @Disabled("Строка из пробелов считается как введённый пароль и ищется в базе")
-    @ParameterizedTest(name = "Пустой пароль: {0}")
-    @ValueSource(strings = {"", " ", "  "})
-    @Tag("validation")
-    @DisplayName("Получение ошибки при входе с пустым паролем")
-    @Step("Тест попытки входа с пустым паролем")
-    void loginWithEmptyPassword_ShouldShowPasswordRequiredError(String password) {
-        openLoginPage();
-        loginPage.login(Data.Login.VALID_LOGIN, password);
 
-        authAssertions.assertGettingErrorMessageToLogin(Data.ErrorMessages.EMPTY_PASSWORD);
-        authAssertions.assertPageNotChanged(driver, TestConfig.BASE_URL);
+    @Test
+    @Tag("validation")
+    @Tag("regression")
+    @DisplayName("ID 7 - Пустое поле Password")
+    @Description("Проверка, что нельзя авторизоваться с пустым паролем и получение ошибки")
+    @Step("Попытка входа с пустым паролем")
+    void loginWithEmptyPassword_ShouldShowPasswordRequiredError() {
+        loginPage.enterLogin(Data.Login.VALID_LOGIN);
+        loginPageAssertions
+                .verifyUsernameFieldText(Data.Login.VALID_LOGIN)
+                .assertPasswordIsEmpty();
+
+        loginPage.clickLogin();
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.EMPTY_PASSWORD);
+    }
+
+    @Tag("validation")
+    @Tag("regression")
+    @ParameterizedTest
+    @Disabled("Строка из пробелов считается как введённый пароль")
+    @ValueSource(strings = {" ", "  ", "   "})
+    @DisplayName("ID 9 - Поле Password заполнено пробелами")
+    @Description("Проверка, что система не позволяет выполнить вход, если поле Username ссодержит только пробелы,\n" +
+            "и отображает сообщение об ошибке валидации")
+    @Step("Попытка входа с паролем из пробелов")
+    void loginWithBlankPassword_ShouldShowUsernameRequiredError(String password) {
+        authAssertions.assertCredentialsAreFilled(Data.Login.VALID_PASSWORD, password);
+
+        loginPage.clickLogin();
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.EMPTY_PASSWORD);
     }
 
     @Test
@@ -99,25 +136,21 @@ public class ErrorLoginTest extends BaseTest {
     @Step("Тест попытки входа с пустым логином и паролем")
     @Disabled("Баг - вместо ошибки валидации логина показывает ошибку для заблокированного пользователя")
     void loginWithEmptyBothFields_ShouldShowUsernameRequiredError() {
-        openLoginPage();
         loginPage.login("", "");
 
-        authAssertions.assertGettingErrorMessageToLogin(Data.ErrorMessages.EMPTY_USERNAME);
-        authAssertions.assertPageNotChanged(driver, TestConfig.BASE_URL);
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.EMPTY_USERNAME);
     }
 
     @Test
-    @DisplayName("Поля авторизации очищаются после обновления страницы")
     @Tag("smoke")
     @Tag("regression")
-    @Step("Тест сброса состояния полей авторизации после обновления страницы")
+    @DisplayName("ID 13 - Сброс данных формы после обновления страницы")
+    @Description("Проверка, что данные не сохраняются после обновления страницы авторизации, если они не сохранены в браузере")
+    @Step("Сбросить состояние полей авторизации после обновления страницы")
     void loginFieldsStateAfterRefresh_ShouldDisplayEmptyFields(){
-        openLoginPage();
-        loginPage.enterLogin(Data.Login.VALID_LOGIN);
-        loginPage.enterPassword(Data.Login.VALID_PASSWORD);
+        authAssertions.assertCredentialsAreFilled(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
         loginPage.refresh();
 
-        LoginPageAssertions loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
         loginPageAssertions.assertCredentialsIsEmpty();
     }
 }

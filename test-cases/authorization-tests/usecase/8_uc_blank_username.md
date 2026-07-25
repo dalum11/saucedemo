@@ -29,4 +29,4 @@
 | 5          | Нажать кнопку Login                     | * Пользователь остаётся на форме авторизации<br/>* Под формой появляется красный саджест с текстом Epic sadface: Username is required  |
 
 ## Связанный автотест
-ErrorLoginTest.loginWithEmptyUsername_ShouldShowUsernameRequiredError()
+ErrorLoginTest.loginWithBlankUsername_ShouldShowUsernameRequiredError()
