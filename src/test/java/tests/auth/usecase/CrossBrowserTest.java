@@ -7,6 +7,8 @@ import core.utils.ClipboardUtils;
 import core.utils.CursorUtils;
 import data.Data;
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
 import pages.auth.LoginPage;
@@ -17,6 +19,7 @@ import tests.common.BaseTest;
 @DisplayName("Кросс-браузерные тесты авторизации (Хром/Яндекс)")
 @Tag("cross-browser")
 @Tag("smoke")
+@Severity(SeverityLevel.CRITICAL)
 public class CrossBrowserTest extends BaseTest {
 
     private LoginPage loginPage;
@@ -69,7 +72,7 @@ public class CrossBrowserTest extends BaseTest {
         loginPage.clearPassword();
         loginPageAssertions.assertPasswordIsEmpty();
         ClipboardUtils.pasteToClipboard(loginPage.getPassword());
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(expectedPassword, expectedPassword.length());
     }
 
     @Test

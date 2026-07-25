@@ -229,7 +229,7 @@ public class LoginPage extends BasePage {
 
     @Step("Получение маскированного пароля")
     public String getMaskedPassword() {
-        return getValue(PASSWORD);
+        return getText(PASSWORD);
     }
 
     @Step("Наведение курсора на поле Username")

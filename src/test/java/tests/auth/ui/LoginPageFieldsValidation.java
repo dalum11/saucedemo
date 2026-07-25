@@ -11,7 +11,6 @@ import pages.auth.LoginPage;
 import pages.auth.LoginPageAssertions;
 import tests.common.BaseTest;
 
-@DisplayName("Тесты валидации полей авторизации")
 @Tag("regression")
 @Tag("ui")
 @Tag("smoke")
@@ -19,6 +18,7 @@ import tests.common.BaseTest;
 @Epic("Авторизация")
 @Severity(SeverityLevel.NORMAL)
 @Feature("Валидация полей формы авторизации")
+@DisplayName("Тесты валидации полей авторизации")
 public class LoginPageFieldsValidation extends BaseTest {
 
     private LoginPage loginPage;
@@ -38,9 +38,9 @@ public class LoginPageFieldsValidation extends BaseTest {
     }
 
     @DisplayName("ID 14 - Проверка ограничения длины поля Username на фронте")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Валидная длина логина: {0} символов")
     @Description("Тест проверяет возможность ввода логина с допустимым количеством символов")
-    @Step("Тест валидной длины логина")
+    @Step("Тест валидной длины логина: {0} символов")
     @ValueSource(ints = {1, 15, 30})
     void loginLengthBoundaryValue_ShouldPassValidation(int length) {
         String login = TestUtils.generateRandomString(length);
@@ -53,10 +53,10 @@ public class LoginPageFieldsValidation extends BaseTest {
     }
 
     @Disabled("Баг - нет ограничения на количество символов для ввода логина")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Невалидная длина логина: {0} символов")
     @ValueSource(ints = {31, 32})
     @DisplayName("ID 14 - Проверка ограничения длины поля Username на фронте")
-    @Step("Тест превышения количества символов логина")
+    @Step("Тест превышения количества символов логина: {0} символов")
     void loginLengthBoundaryValue_ShouldFailValidation(int length) {
         String login = TestUtils.generateRandomString(length);
         int expectedLength = 30;
@@ -68,9 +68,9 @@ public class LoginPageFieldsValidation extends BaseTest {
     }
 
     @DisplayName("ID 15 - Проверка ограничения длины поля Password на фронте")
-    @ParameterizedTest
+    @ParameterizedTest(name = "Валидная длина пароля: {0} символов")
     @Description("Тест проверяет возможность ввода пароля с допустимым количеством символов")
-    @Step("Тест валидной длины пароля")
+    @Step("Тест валидной длины пароля: {0} символов")
     @ValueSource(ints = {1, 15, 30})
     void passwordLengthBoundaryValue_ShouldPassValidation(int length) {
         String password = TestUtils.generateRandomString(length);
@@ -79,14 +79,14 @@ public class LoginPageFieldsValidation extends BaseTest {
         loginPage.blurActiveElement();
 
         loginPageAssertions.assertPasswordTextLength(length);
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(password, password.length());
     }
 
     @Disabled("Баг - нет ограничения на количество символов для ввода пароля")
-    @ParameterizedTest
+    @ParameterizedTest(name = "невалидная длина пароля: {0} символов")
     @ValueSource(ints = {31, 32})
     @DisplayName("ID 15 - Проверка ограничения длины поля Password на фронте")
-    @Step("Тест превышения количества символов пароля")
+    @Step("Тест превышения количества символов пароля: {0} символов")
     void passwordLengthBoundaryValue_ShouldFailValidation(int length) {
         String password = TestUtils.generateRandomString(length);
         int expectedLength = 30;
@@ -95,6 +95,6 @@ public class LoginPageFieldsValidation extends BaseTest {
         loginPage.blurActiveElement();
 
         loginPageAssertions.assertPasswordTextLength(expectedLength);
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(password, expectedLength);
     }
 }

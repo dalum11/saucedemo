@@ -27,4 +27,4 @@
 | 3          | Нажать кнопку Login                                  | * Пользователь остаётся на форме авторизации<br/>* Под формой появляется красный саджест с текстом Epic sadface: Username and password do not match any user in this service  |                                                                                                                                   |
 
 ## Связанный автотест
-ErrorLoginTest.loginWithWrongPassword_ShouldFailAuth()
+ErrorLoginTest.loginWithWrongCredentials_ShouldFailAuth()

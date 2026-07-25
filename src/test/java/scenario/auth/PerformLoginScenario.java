@@ -39,7 +39,7 @@ public class PerformLoginScenario {
 //        loginPageAssertions.verifyLoginButtonDisabled();
 
         loginPage.enterPassword(Data.Login.VALID_PASSWORD);
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(Data.Login.VALID_PASSWORD, Data.Login.VALID_PASSWORD.length());
         loginPageAssertions.verifyLoginButtonEnabled();
 
         loginPage.clickLogin();
@@ -71,7 +71,7 @@ public class PerformLoginScenario {
 
         ClipboardUtils.copyToClipboard(Data.Login.VALID_PASSWORD);
         ClipboardUtils.pasteToClipboard(loginPage.getPassword());
-        authAssertions.assertPasswordIsMasked();
+        authAssertions.assertPasswordIsMasked(Data.Login.VALID_PASSWORD, Data.Login.VALID_PASSWORD.length());
         loginPageAssertions.verifyLoginButtonEnabled();
 
         loginPage.clickLogin();

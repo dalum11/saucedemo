@@ -29,4 +29,4 @@
 | 5          | Нажать кнопку Login                     | * Пользователь остаётся на форме авторизации<br/>* Под формой появляется красный саджест с текстом Epic sadface: Password is required |
 
 ## Связанный автотест
-ErrorLoginTest.loginWithEmptyPassword_ShouldShowPasswordRequiredError()
+ErrorLoginTest.loginWithBlankPassword_ShouldShowPasswordRequiredError()

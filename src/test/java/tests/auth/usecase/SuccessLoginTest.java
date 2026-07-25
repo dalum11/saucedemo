@@ -1,28 +1,26 @@
 package tests.auth.usecase;
 
 import core.assertions.AuthAssertions;
+import core.utils.CursorUtils;
+import pages.auth.LoginPageAssertions;
 import tests.common.BaseTest;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import pages.auth.LoginPage;
 import pages.main.MainPage;
 import data.Data;
-import core.utils.TestUtils;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Epic("Авторизация")
 @Feature("Вход")
 @Story("Авторизация пользователя")
-@Severity(SeverityLevel.CRITICAL)
 @DisplayName("Тесты успешной авторизации")
+@Severity(SeverityLevel.CRITICAL)
 public class SuccessLoginTest extends BaseTest {
 
     private LoginPage loginPage;
     private MainPage mainPage;
     private AuthAssertions authAssertions;
+    private LoginPageAssertions loginPageAssertions;
 
     @BeforeEach
     @Step("Подготовка теста")
@@ -31,19 +29,22 @@ public class SuccessLoginTest extends BaseTest {
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
         authAssertions = new AuthAssertions(loginPage);
+        loginPageAssertions = new LoginPageAssertions(loginPage, driver, new CursorUtils(driver));
         openLoginPage();
     }
 
     @Test
-    @DisplayName("Успешная авторизация пользователя с валидными логином и паролем")
-    @Description("Тест проверяет, что валидный пользователь авторизуется успешно")
+    @DisplayName("ID 5 - Успешная первая авторизация")
+    @Description("Проверка успешной авторизации пользователя, который ни разу не посещал сайт")
     @Tag("smoke")
     @Tag("regression")
-    @Step("Тест успешной авторизации")
+    @Severity(SeverityLevel.CRITICAL)
+    @Step("Выполнить успешный вход в систему")
     void checkSuccessfulLoginWithValidUser() {
         int productCardIndex = 0;
-        loginPage.login(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
+        authAssertions.assertCredentialsAreFilled(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
 
+        loginPage.clickLogin();
         mainPage.waitForPageLoad();
         authAssertions.assertUserIsLoggedIn(productCardIndex);
     }
@@ -56,7 +57,8 @@ public class SuccessLoginTest extends BaseTest {
     @Step("Тест долгой загрузки страницы")
     void loginWithPerformanceGlitchUser_ShouldLoadPageWithTimeout() {
         int productCardIndex = 0;
-        loginPage.login(Data.Login.PERFORMANCE_GLITCH_LOGIN, Data.Login.VALID_PASSWORD);
+        authAssertions.assertCredentialsAreFilled(Data.Login.PERFORMANCE_GLITCH_LOGIN, Data.Login.VALID_PASSWORD);
+        loginPage.clickLogin();
         mainPage.waitForPageLoad();
 
         authAssertions.assertUserIsLoggedIn(productCardIndex);

@@ -100,23 +100,19 @@ public class AuthAssertions extends BaseAssertions {
         log.info("Доступные учетные данные корректно отображены");
     }
 
-    public void assertPasswordIsMasked() {
-        String testPassword = "secret_sauce";
-        loginPage.enterPassword(testPassword);
-
+    public void assertPasswordIsMasked(String expectedPassword, int expectedLength) {
         String displayedValue = loginPage.getMaskedPassword();
+        loginPageAssertions.assertPasswordTextLength(expectedLength);
 
         assertThat(displayedValue)
-                .as("Отображаемое значение поля пароля")
-                .hasSize(testPassword.length());
+                .as("Символы пароля должны отличаться от введённых")
+                .isNotEqualTo(expectedPassword);
 
         log.debug("Поле пароля корректно маскирует ввод");
     }
 
     public void assertGettingErrorMessageToLogin(String errorMessage) {
-        loginPage.login("locked_out_user", "secret_sauce");
         loginPageAssertions.verifyErrorMessage(errorMessage);
-
         log.warn("Заблокированный пользователь не может войти в систему");
     }
 
@@ -138,5 +134,19 @@ public class AuthAssertions extends BaseAssertions {
             log.debug("HeaderComponent или MainPage не найдены, используется упрощенная проверка");
             return false;
         }
+    }
+
+    public void assertCredentialsAreFilled(String username, String password) {
+        loginPage.enterLogin(username);
+        loginPageAssertions.verifyUsernameFieldText(username);
+
+        loginPage.enterPassword(password);
+        assertPasswordIsMasked(password, password.length());
+        loginPageAssertions.verifyLoginButtonEnabled();
+    }
+
+    public void assertPageNotChangedAfterGettingError(String errorMessage) {
+        assertGettingErrorMessageToLogin(errorMessage);
+        assertPageNotChanged(driver, TestConfig.BASE_URL);
     }
 }
