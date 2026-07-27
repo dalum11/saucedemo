@@ -63,10 +63,13 @@ public class LoginPageFieldsState extends BaseTest {
     @Test
     @DisplayName("ID 3 - Проверка очистки полей")
     @Description("Проверка очистки полей с помощью клавиатуры и кнопки Крестик")
-    @Disabled("Баг - не появлется кнопка Крестик")
+    @Disabled("Баг - не появляется кнопка Крестик")
     @Step("Проверка изменения и удаления данных в полях формы авторизации")
     @Severity(SeverityLevel.CRITICAL)
     void authPage_cleanFields_ShouldCleanCorrectly() {
+        loginPageAssertions.assertCrossButtonLoginIsInvisible();
+        loginPageAssertions.assertCrossButtonLoginIsInvisible();
+
         loginPage.enterLogin(Data.Login.VALID_LOGIN);
         loginPageAssertions.assertUsernameFilled(Data.Login.VALID_LOGIN);
 

@@ -47,7 +47,7 @@ public class LoginPageAdaptiveTest extends BaseTest {
     @Test
     @BrowserResolution(BrowserOrientation.MB)
     @Step("Проверка отображения формы авторизации в мобильном разрешении")
-    @Description("Тест проверет отобржение элементов страницы авторизации в мобильном разрешении")
+    @Description("Тест проверяет отображение элементов страницы авторизации в мобильном разрешении")
     @DisplayName("ID 18 - Проверка отображения страницы авторизации в мобильном разрешении")
     void mobileView_ElementsShouldDisplayCorrectly() {
         authAssertions.assertLoginPageIsDisplayedCorrectly();

@@ -130,7 +130,7 @@ public class ErrorLoginTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Вход с пустыми логином и паролем должен показывать ошибку валидации логина")
+    @DisplayName("ID 33 - Вход с пустыми логином и паролем должен показывать ошибку валидации логина")
     @Tag("validation")
     @Tag("regression")
     @Step("Тест попытки входа с пустым логином и паролем")

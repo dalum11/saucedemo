@@ -51,7 +51,7 @@ public class SuccessLoginTest extends BaseTest {
 
     @Test
     @DisplayName("Авторизация при необычно долгой загрузке страницы")
-    @Description("Тест проверяет необычно долгую зашрузку страницы")
+    @Description("Тест проверяет необычно долгую загрузку страницы")
     @Tag("smoke")
     @Tag("regression")
     @Step("Тест долгой загрузки страницы")
