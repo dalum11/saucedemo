@@ -28,6 +28,14 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Install Yandex Browser
+        run: |
+          wget -q -O - https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | sudo apt-key add -
+          echo "deb [arch=amd64] https://repo.yandex.ru/yandex-browser/deb stable main" | sudo tee /etc/apt/sources.list.d/yandex-browser.list
+          sudo apt-get update
+          sudo apt-get install -y yandex-browser-stable
+          
+
       - name: Run tests with Maven
         run: mvn clean test -Pci
 
