@@ -10,7 +10,6 @@ public class TestConfig {
     public static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(10);
     public static final Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(20);
     public static final Duration IMPLICIT_WAIT_TIMEOUT = Duration.ofSeconds(3);
-    public static final Browser DEFAULT_BROWSER = Browser.GOOGLE_CHROME;
     public static final boolean DEFAULT_HEADLESS = false;
     public static final String BASE_URL = "https://www.saucedemo.com/";
 
@@ -48,6 +47,13 @@ public class TestConfig {
             case STANDARD:
                 options.addArguments("--window-size=1440,1920");
                 break;
+        }
+
+        if (isHeadless()) {
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
         }
 
         return options;
