@@ -35,6 +35,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y yandex-browser-stable
           
+          wget https://github.com/yandex/YandexDriver/releases/download/26.6.0.1742/yandexdriver-linux
+          chmod +x yandexdriver-linux
+          sudo mv yandexdriver-linux /usr/local/bin/yandexdriver
+          
 
       - name: Run tests with Maven
         run: mvn clean test -Pci
