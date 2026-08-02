@@ -31,9 +31,10 @@ jobs:
       - name: Install Yandex Browser
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gnupg
-          wget -q -O - https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | sudo apt-key add -
-          echo "deb [arch=amd64] https://repo.yandex.ru/yandex-browser/deb stable main" | sudo tee /etc/apt/sources.list.d/yandex-browser.list
+          sudo apt-get install -y wget gnupg2
+          
+          wget -q -O - https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | gpg --dearmor | sudo tee /usr/share/keyrings/yandex-browser.gpg > /dev/null
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/yandex-browser.gpg] https://repo.yandex.ru/yandex-browser/deb stable main" | sudo tee /etc/apt/sources.list.d/yandex-browser.list
           
           sudo apt-get update
           sudo apt-get install -y yandex-browser-stable || sudo apt-get install -y yandex-browser
@@ -42,8 +43,19 @@ jobs:
           chmod +x yandexdriver-linux
           sudo mv yandexdriver-linux /usr/local/bin/yandexdriver
           
-          yandexdriver --version || echo "YandexDriver not found"
-          yandex-browser --version || echo "Yandex Browser not found"     
+          if command -v yandexdriver &> /dev/null; then
+            echo "YandexDriver installed successfully"
+          else
+            echo "YandexDriver installation failed"
+            exit 1
+          fi
+          
+          if command -v yandex-browser &> /dev/null || command -v browser &> /dev/null; then
+            echo "Yandex Browser installed successfully"
+          else
+            echo "Yandex Browser installation failed"
+            exit 1
+          fi
 
       - name: Run tests with Maven
         run: mvn clean test -Pci
