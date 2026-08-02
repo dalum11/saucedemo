@@ -56,13 +56,29 @@ public abstract class BaseTest {
                 driver = new ChromeDriver(options);
             }
             case Yandex -> {
-                System.setProperty("webdriver.chrome.driver",
-                        "C:\\Users\\dalum\\Downloads\\yandexdriver-26.6.0.1742-win64\\yandexdriver.exe");
+                boolean isCI = Boolean.parseBoolean(System.getProperty("ci", "false"));
+                String os = System.getProperty("os.name").toLowerCase();
+
                 ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
 
-                String browserPath = "C:\\Program Files (x86)\\Yandex\\YandexBrowser\\Application\\browser.exe";
-                options.setBinary(browserPath);
-                driver = new ChromeDriver(options);
+                if (isCI || os.contains("linux")) {
+                    System.setProperty("webdriver.chrome.driver", "/usr/local/bin/yandexdriver");
+
+                    String yandexPath = "/usr/bin/yandex-browser";
+                    if (new File(yandexPath).exists()) {
+                        options.setBinary(yandexPath);
+                    }
+
+                    driver = new ChromeDriver(options);
+                } else if (os.contains("win")) {
+                    System.setProperty("webdriver.chrome.driver",
+                            "C:\\Users\\dalum\\Downloads\\yandexdriver-26.6.0.1742-win64\\yandexdriver.exe");
+                    options.setBinary("C:\\Program Files (x86)\\Yandex\\YandexBrowser\\Application\\browser.exe");
+                    driver = new ChromeDriver(options);
+                } else {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(options);
+                }
             }
         }
 
