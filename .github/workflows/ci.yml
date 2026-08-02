@@ -28,7 +28,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Install Yandex Browser
+      - name: Install Yandex Browser and Driver
         run: |
           sudo apt-get update
           sudo apt-get install -y wget gdebi-core
@@ -40,26 +40,17 @@ jobs:
           chmod +x yandexdriver-linux
           sudo mv yandexdriver-linux /usr/local/bin/yandexdriver
           
-          if command -v yandexdriver &> /dev/null; then
-            echo "YandexDriver installed successfully"
-          else
-            echo "YandexDriver installation failed"
-            exit 1
-          fi
+          echo "Проверка YandexDriver:"
+          yandexdriver --version || (echo "YandexDriver not found" && exit 1)
           
-          if command -v yandex-browser &> /dev/null || command -v browser &> /dev/null; then
-            echo "Yandex Browser installed successfully"
-          else
-            echo "Yandex Browser installation failed"
-            exit 1
-          fi
+          echo "Проверка Yandex Browser:"
+          yandex-browser --version || browser --version || (echo "Browser not found" && exit 1)
 
       - name: Find Yandex Browser
         if: always()
         run: |
           echo "Searching for Yandex Browser..."
-          
-          find / -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
+          find /usr -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
           echo "---"
           which yandex-browser || which browser || echo "Not found in PATH"
 
