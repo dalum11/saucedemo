@@ -63,7 +63,7 @@ public abstract class BaseTest {
                 ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
 
                 if (isCI || os.contains("linux")) {
-                    System.setProperty("webdriver.chrome.driver", "/usr/local/bin/yandexdriver");
+                    WebDriverManager.chromedriver().setup();
 
                     String yandexPath = "/usr/bin/yandex-browser";
                     options.setBinary(yandexPath);

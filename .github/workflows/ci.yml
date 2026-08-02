@@ -28,18 +28,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Install Yandex Browser and Driver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget gdebi-core
-
-          wget https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_26.6.1.1005-1_amd64.deb
-          sudo gdebi -n yandex-browser-stable_26.6.1.1005-1_amd64.deb || sudo dpkg -i yandex-browser-stable_26.6.1.1005-1_amd64.deb
-
-          wget https://github.com/yandex/YandexDriver/releases/download/26.6.1.1005/yandexdriver-linux
-          chmod +x yandexdriver-linux
-          sudo mv yandexdriver-linux /usr/local/bin/yandexdriver
-
       - name: Find Yandex Browser
         if: always()
         run: |
