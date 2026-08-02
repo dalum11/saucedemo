@@ -28,6 +28,13 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Find Yandex Browser
+        run: |
+          echo "Searching for Yandex Browser..."
+          find / -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
+          echo "---"
+          which yandex-browser || which browser || echo "Not found in PATH"
+
       - name: Install Yandex Browser
         run: |
           sudo apt-get update
@@ -53,13 +60,6 @@ jobs:
             echo "Yandex Browser installation failed"
             exit 1
           fi
-
-      - name: Find Yandex Browser
-        run: |
-          echo "Searching for Yandex Browser..."
-          find / -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
-          echo "---"
-          which yandex-browser || which browser || echo "Not found in PATH"
 
       - name: Run tests with Maven
         run: mvn clean test -Pci
