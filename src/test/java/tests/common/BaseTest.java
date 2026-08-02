@@ -55,6 +55,7 @@ public abstract class BaseTest {
                 ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
                 driver = new ChromeDriver(options);
             }
+
             case Yandex -> {
                 boolean isCI = Boolean.parseBoolean(System.getProperty("ci", "false"));
                 String os = System.getProperty("os.name").toLowerCase();
@@ -62,7 +63,8 @@ public abstract class BaseTest {
                 ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
 
                 if (isCI || os.contains("linux")) {
-                    System.setProperty("webdriver.chrome.driver", "/usr/local/bin/yandexdriver");
+                    System.setProperty("webdriver.chrome.driver",
+                            "C:\\Users\\dalum\\Downloads\\yandexdriver-26.6.1.1005-linux\\yandexdriver");
 
                     String yandexPath = "/usr/bin/yandex-browser";
                     options.setBinary(yandexPath);
