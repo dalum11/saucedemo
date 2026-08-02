@@ -61,6 +61,14 @@ jobs:
             exit 1
           fi
 
+      - name: Find Yandex Browser
+        if: always()
+        run: |
+          echo "Searching for Yandex Browser..."
+          find / -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
+          echo "---"
+          which yandex-browser || which browser || echo "Not found in PATH"
+
       - name: Run tests with Maven
         run: mvn clean test -Pci
 
