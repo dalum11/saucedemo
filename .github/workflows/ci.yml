@@ -31,13 +31,10 @@ jobs:
       - name: Install Yandex Browser
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gnupg2
+          sudo apt-get install -y wget gdebi-core
           
-          wget -q -O - https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | gpg --dearmor | sudo tee /usr/share/keyrings/yandex-browser.gpg > /dev/null
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/yandex-browser.gpg] https://repo.yandex.ru/yandex-browser/deb stable main" | sudo tee /etc/apt/sources.list.d/yandex-browser.list
-          
-          sudo apt-get update
-          sudo apt-get install -y yandex-browser-stable || sudo apt-get install -y yandex-browser
+          wget https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_26.6.0.1742-1_amd64.deb
+          sudo gdebi -n yandex-browser-stable_26.6.0.1742-1_amd64.deb || sudo dpkg -i yandex-browser-stable_26.6.0.1742-1_amd64.deb
           
           wget https://github.com/yandex/YandexDriver/releases/download/26.6.0.1742/yandexdriver-linux
           chmod +x yandexdriver-linux
