@@ -64,7 +64,7 @@ public abstract class BaseTest {
                 if (isCI || os.contains("linux")) {
                     System.setProperty("webdriver.chrome.driver", "/usr/local/bin/yandexdriver");
 
-                    String yandexPath = "usr/bin/yandex-browser";
+                    String yandexPath = "/usr/bin/yandex-browser";
                     options.setBinary(yandexPath);
                     driver = new ChromeDriver(options);
                 } else if (os.contains("win")) {
