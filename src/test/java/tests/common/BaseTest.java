@@ -64,31 +64,8 @@ public abstract class BaseTest {
                 if (isCI || os.contains("linux")) {
                     System.setProperty("webdriver.chrome.driver", "/usr/local/bin/yandexdriver");
 
-                    String[] possiblePaths = {
-                            "/usr/bin/yandex-browser",
-                            "/usr/bin/browser",
-                            "/opt/yandex/browser",
-                            "/usr/lib/yandex-browser/yandex-browser"
-                    };
-
-                    String yandexPath = null;
-                    for (String path : possiblePaths) {
-                        if (new File(path).exists()) {
-                            yandexPath = path;
-                            break;
-                        }
-                    }
-
-                    if (yandexPath != null) {
-                        options.setBinary(yandexPath);
-                        log.info("Используется Яндекс.Браузер по пути: {}", yandexPath);
-                    } else {
-                        log.warn("Яндекс.Браузер не найден, используется Chrome по умолчанию");
-                        // Если не нашли, используем Chrome
-                        WebDriverManager.chromedriver().setup();
-                        driver = new ChromeDriver(options);
-                    }
-
+                    String yandexPath = "usr/bin/yandex-browser";
+                    options.setBinary(yandexPath);
                     driver = new ChromeDriver(options);
                 } else if (os.contains("win")) {
                     System.setProperty("webdriver.chrome.driver",
