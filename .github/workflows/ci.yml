@@ -37,7 +37,7 @@ jobs:
           sudo apt-get install -y yandex-browser-stable
 
           wget https://github.com/yandex/YandexDriver/archive/refs/tags/v26.6.0-stable.zip
-          unzip yandexdriver-26.6.1.1005-linux.zip
+          unzip v26.6.0-stable.zip
           chmod +x yandexdriver
           sudo mv yandexdriver /usr/local/bin/yandexdriver
 
