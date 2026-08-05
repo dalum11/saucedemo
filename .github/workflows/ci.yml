@@ -30,20 +30,15 @@ jobs:
 
       - name: Install Yandex Browser and Driver
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wget gdebi-core
+          wget -q -O - https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | sudo apt-key add -
+          echo "deb [arch=amd64] https://repo.yandex.ru/yandex-browser/deb stable main" | sudo tee /etc/apt/sources.list.d/yandex-browser.list
 
-          wget https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_26.6.1.1005-1_amd64.deb
-          sudo gdebi -n yandex-browser-stable_26.6.1.1005-1_amd64.deb || sudo dpkg -i yandex-browser-stable_26.6.1.1005-1_amd64.deb
+          sudo apt-get update
+          sudo apt-get install -y yandex-browser-stable
 
           wget https://github.com/yandex/YandexDriver/releases/download/26.6.1.1005/yandexdriver-linux
           chmod +x yandexdriver-linux
           sudo mv yandexdriver-linux /usr/local/bin/yandexdriver
-
-          echo "YandexDriver version:"
-          yandexdriver --version || echo "YandexDriver not found"
-          echo "Yandex Browser version:"
-          yandex-browser --version || browser --version || echo "Browser not found"
 
       - name: Find Yandex Browser
         if: always()
