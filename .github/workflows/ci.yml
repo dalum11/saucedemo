@@ -60,6 +60,25 @@ jobs:
           sudo apt-get install -y google-chrome-stable
           google-chrome --version
 
+      - name: Install Headless Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libx11-6 \
+            libxcb1 \
+            libxcomposite1 \
+            libxcursor1 \
+            libxdamage1 \
+            libxi6 \
+            libxtst6 \
+            libnss3 \
+            libcups2 \
+            libxss1 \
+            libxrandr2 \
+            libasound2t64 \
+            libatk-bridge2.0-0 \
+            libgtk-3-0
+
       - name: Run tests with Maven
         run: mvn clean test -Pci
 
