@@ -88,6 +88,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
+                                <ci>true</ci>
                                 <headless>${headless}</headless>
                             </systemPropertyVariables>
                         </configuration>

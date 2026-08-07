@@ -55,6 +55,7 @@ public abstract class BaseTest {
                 ChromeOptions options = TestConfig.getChromeOptions(browserOrientation);
                 driver = new ChromeDriver(options);
             }
+
             case Yandex -> {
                 boolean isCI = Boolean.parseBoolean(System.getProperty("ci", "false"));
                 String os = System.getProperty("os.name").toLowerCase();

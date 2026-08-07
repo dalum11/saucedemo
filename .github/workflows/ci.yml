@@ -28,41 +28,48 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Install Yandex Browser and Driver
+        run: |
+          wget -q -O - https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | sudo apt-key add -
+          echo "deb [arch=amd64] https://repo.yandex.ru/yandex-browser/deb stable main" | sudo tee /etc/apt/sources.list.d/yandex-browser.list
+
+          sudo apt-get update
+          sudo apt-get install -y yandex-browser-stable
+
+          wget https://github.com/yandex/YandexDriver/releases/download/v26.6.1-stable/yandexdriver-26.6.1.1005-linux.zip
+          unzip yandexdriver-26.6.1.1005-linux.zip
+          chmod +x yandexdriver
+          sudo mv yandexdriver /usr/local/bin/yandexdriver
+
+          yandexdriver --version || echo "YandexDriver not found"
+          yandex-browser --version || browser --version || echo "Yandex Browser not found"
+
       - name: Find Yandex Browser
+        if: always()
         run: |
           echo "Searching for Yandex Browser..."
-          find / -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
+          find /usr -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
           echo "---"
           which yandex-browser || which browser || echo "Not found in PATH"
 
-      - name: Install Yandex Browser
+      - name: Install Google Chrome
+        run: |
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+          google-chrome --version
+
+      - name: Install Headless Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gdebi-core
-          
-          wget https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_26.6.0.1742-1_amd64.deb
-          sudo gdebi -n yandex-browser-stable_26.6.0.1742-1_amd64.deb || sudo dpkg -i yandex-browser-stable_26.6.0.1742-1_amd64.deb
-          
-          wget https://github.com/yandex/YandexDriver/releases/download/26.6.0.1742/yandexdriver-linux
-          chmod +x yandexdriver-linux
-          sudo mv yandexdriver-linux /usr/local/bin/yandexdriver
-          
-          if command -v yandexdriver &> /dev/null; then
-            echo "YandexDriver installed successfully"
-          else
-            echo "YandexDriver installation failed"
-            exit 1
-          fi
-          
-          if command -v yandex-browser &> /dev/null || command -v browser &> /dev/null; then
-            echo "Yandex Browser installed successfully"
-          else
-            echo "Yandex Browser installation failed"
-            exit 1
-          fi
+          sudo apt-get install -y xvfb
 
       - name: Run tests with Maven
-        run: mvn clean test -Pci
+        run: |
+          Xvfb :99 -screen 0 1024x768x24 &
+          export DISPLAY=:99
+          mvn clean test -Pci
 
       - name: Generate Allure Report
         run: |

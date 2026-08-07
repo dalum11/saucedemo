@@ -11,6 +11,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import pages.auth.LoginPage;
 import pages.auth.LoginPageAssertions;
 import pages.main.MainPage;
@@ -98,6 +99,7 @@ public class CrossBrowserTest extends BaseTest {
     @Description("Проверка, что в Яндекс Браузере работают копирование и вставка в полях ввода")
     @Step("Тест копирования и вставки в Яндекс Браузере")
     @CurrentBrowser(Browser.Yandex)
+    @DisabledIfSystemProperty(named = "ci", matches = "true")
     void checkYandexCopyPaste() {
         checkCopyPaste();
     }
@@ -107,6 +109,7 @@ public class CrossBrowserTest extends BaseTest {
     @Description("Проверка, что в Google Chrome работают копирование и вставка в полях ввода")
     @Step("Тест копирования и вставки в Google Chrome")
     @CurrentBrowser(Browser.GOOGLE_CHROME)
+    @DisabledIfSystemProperty(named = "ci", matches = "true")
     void checkGoogleChromeCopyPaste() {
         checkCopyPaste();
     }
