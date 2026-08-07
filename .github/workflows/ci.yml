@@ -44,14 +44,6 @@ jobs:
           yandexdriver --version || echo "YandexDriver not found"
           yandex-browser --version || browser --version || echo "Yandex Browser not found"
 
-      - name: Find Yandex Browser
-        if: always()
-        run: |
-          echo "Searching for Yandex Browser..."
-          find /usr -name "*yandex*" -type f 2>/dev/null | grep -E "browser|yandex-browser" | head -10
-          echo "---"
-          which yandex-browser || which browser || echo "Not found in PATH"
-
       - name: Install Google Chrome
         run: |
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -76,16 +68,11 @@ jobs:
           mvn allure:report
         continue-on-error: true
 
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
-          name: allure-results
-          path: target/allure-results
-
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site/allure-maven-plugin
+          destination_dir: ./allure-report
+          keep_files: false
