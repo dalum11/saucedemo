@@ -1,0 +1,1 @@
+Ввод текста 'standard_user' в элемент: By.id: user-name

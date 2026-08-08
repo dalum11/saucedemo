@@ -1,0 +1,1 @@
+Поиск элемента: By.className: login_logo

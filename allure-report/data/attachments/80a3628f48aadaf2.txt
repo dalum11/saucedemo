@@ -1,0 +1,1 @@
+Ввод текста 'locked_out_user' в элемент: By.id: user-name

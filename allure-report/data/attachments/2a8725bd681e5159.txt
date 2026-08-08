@@ -1,0 +1,1 @@
+Ввод текста 'performance_glitch_user' в элемент: By.id: user-name
