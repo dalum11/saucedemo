@@ -1,0 +1,1 @@
+Браузер получен из аннотации @CurrentBrowser: Yandex
