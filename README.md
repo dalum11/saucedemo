@@ -8,6 +8,7 @@
 - [Работа с тестами](#работа-с-тестами)
 - [Быстрый запуск](#быстрый-запуск)
 - [Покрытие тестами](#покрытие-тестами)
+- [Allure отчёт](#allure-отчёт)
 
 ## Общая информация
 Тестируемый продукт - https://www.saucedemo.com
@@ -125,3 +126,9 @@ allure serve target/allure-results
 ## Покрытие тестами
 Актуальное тестовое покрытие и план по улучшению:
 https://github.com/dalum11/saucedemo/wiki/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%BF%D0%BE%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5-%E2%80%90-%D0%90%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F
+
+## Allure отчёт
+Актуальный отчёт доступен по ссылке:
+https://vk.ru/away.php?to=https%3A%2F%2Fdalum11.github.io%2Fsaucedemo%2Fallure-report%2F&utf=1
+
+[![Allure Report](https://img.shields.io/badge/Allure-Report-blue)](https://dalum11.github.io/saucedemo/allure-report/)
