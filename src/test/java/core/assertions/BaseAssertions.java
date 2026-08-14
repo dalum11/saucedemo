@@ -92,6 +92,19 @@ public abstract class BaseAssertions {
         }
     }
 
+    public void assertElementNotVisible(WebDriver driver, WebElement element, Duration timeout) {
+        WebDriverWait wait = getWait(driver, timeout);
+        try {
+            boolean isInvisible = wait.until(ExpectedConditions.invisibilityOf(element));
+            assertThat(isInvisible)
+                    .as("Элемент " + element + " должен быть невидимым")
+                    .isTrue();
+            log.debug("Элемент {} невидим", element);
+        } catch (TimeoutException e) {
+            fail("Элемент " + element + " не стал невидимым за " + timeout.getSeconds() + " секунд", e);
+        }
+    }
+
     public void assertElementEnabled(WebDriver driver, By locator) {
         try {
             WebElement element = driver.findElement(locator);

@@ -11,6 +11,8 @@ import pages.auth.LoginPage;
 import pages.auth.LoginPageAssertions;
 import tests.common.BaseTest;
 
+import java.util.List;
+
 @Tag("regression")
 @Tag("ui")
 @Tag("smoke")
@@ -45,7 +47,7 @@ public class LoginPageFieldsValidation extends BaseTest {
     void loginLengthBoundaryValue_ShouldPassValidation(int length) {
         String login = TestUtils.generateRandomString(length);
 
-        loginPage.enterLogin(login);
+        loginPage.enterUsername(login);
         loginPage.blurActiveElement();
 
         loginPageAssertions.assertUsernameTextLength(length);
@@ -61,7 +63,7 @@ public class LoginPageFieldsValidation extends BaseTest {
         String login = TestUtils.generateRandomString(length);
         int expectedLength = 30;
 
-        loginPage.enterLogin(login);
+        loginPage.enterUsername(login);
         loginPage.blurActiveElement();
 
         loginPageAssertions.assertUsernameTextLength(expectedLength);
@@ -96,5 +98,42 @@ public class LoginPageFieldsValidation extends BaseTest {
 
         loginPageAssertions.assertPasswordTextLength(expectedLength);
         authAssertions.assertPasswordIsMasked(password, expectedLength);
+    }
+
+    @Test
+    @DisplayName("ID 29 - Проверка ввода допустимых символов в поле Username")
+    @Step("Ввести валидные символы в поле Username и проверить их отображение")
+    @Description("Проверка, что поле Username принимает все допустимые варианты ввода - кириллицы, латиницы, цифр, " +
+            "спецсимволов и пробелов")
+    void usernameValidInput_ShouldDisplayCorrectly() {
+        List<String> validUsernames = List.of("eng login", "рус логин", "1234567890", "!@#$%^&*()_+", "123тышosz^&*");
+
+        for (String username : validUsernames) {
+            loginPage.enterUsername(username);
+            loginPageAssertions.verifyUsernameFieldText(username)
+                    .verifyNoErrorMessage();
+
+            loginPage.clearUsername();
+            loginPageAssertions.assertUsernameIsEmpty();
+        }
+    }
+
+    @Test
+    @DisplayName("ID 30 - Проверка ввода допустимых символов в поле Password")
+    @Step("Ввести валидные символы в поле Password и проверить их отображение")
+    @Description("Проверка, что поле Password принимает все допустимые варианты ввода - кириллицы, латиницы, цифр, " +
+            "спецсимволов и пробелов")
+    void passwordValidInput_ShouldDisplayCorrectly() {
+        List<String> validPasswords = List.of("eng password", "рус пароль", "1234567890", "!@#$%^&*()_+", "123тышosz^&*");
+
+        for (String password : validPasswords) {
+            loginPage.enterPassword(password);
+            authAssertions.assertPasswordIsMasked(password, password.length());
+            loginPageAssertions.verifyPasswordFieldText(password)
+                    .verifyNoErrorMessage();
+
+            loginPage.clearPassword();
+            loginPageAssertions.assertPasswordIsEmpty();
+        }
     }
 }

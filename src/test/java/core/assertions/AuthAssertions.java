@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AuthAssertions extends BaseAssertions {
     private final WebDriver driver;
@@ -137,7 +138,7 @@ public class AuthAssertions extends BaseAssertions {
     }
 
     public void assertCredentialsAreFilled(String username, String password) {
-        loginPage.enterLogin(username);
+        loginPage.enterUsername(username);
         loginPageAssertions.verifyUsernameFieldText(username);
 
         loginPage.enterPassword(password);
@@ -148,5 +149,20 @@ public class AuthAssertions extends BaseAssertions {
     public void assertPageNotChangedAfterGettingError(String errorMessage) {
         assertGettingErrorMessageToLogin(errorMessage);
         assertPageNotChanged(driver, TestConfig.BASE_URL);
+    }
+
+    public void assertGettingBrowserConnectionError() {
+        String currentUrl = driver.getCurrentUrl();
+        String pageSource = driver.getPageSource();
+        String title = driver.getTitle();
+
+        boolean isErrorPage = currentUrl.startsWith("chrome-error://") ||
+                        currentUrl.startsWith("data:,") ||
+                        pageSource.contains("ERR_INTERNET_DISCONNECTED") ||
+                        pageSource.contains("Unable to connect") ||
+                        title.contains("Unable to connect") ||
+                        title.contains("No internet");
+
+        assertTrue(isErrorPage, "Ожидалась страница ошибки браузера, но получен URL: " + currentUrl);
     }
 }

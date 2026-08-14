@@ -34,7 +34,7 @@ public class PerformLoginScenario {
 
     @Step("Выполнить успешный логин")
     public void performSuccessfulLogin() {
-        loginPage.enterLogin(Data.Login.VALID_LOGIN);
+        loginPage.enterUsername(Data.Login.VALID_LOGIN);
         loginPageAssertions.verifyUsernameFieldText(Data.Login.VALID_LOGIN);
 //        loginPageAssertions.verifyLoginButtonDisabled();
 

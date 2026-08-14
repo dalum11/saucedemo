@@ -70,13 +70,13 @@ public class LoginPageFieldsState extends BaseTest {
         loginPageAssertions.assertCrossButtonLoginIsInvisible();
         loginPageAssertions.assertCrossButtonLoginIsInvisible();
 
-        loginPage.enterLogin(Data.Login.VALID_LOGIN);
+        loginPage.enterUsername(Data.Login.VALID_LOGIN);
         loginPageAssertions.assertUsernameFilled(Data.Login.VALID_LOGIN);
 
         loginPage.clickOnCrossButtonUsername();
         loginPageAssertions.assertUsernameCleared();
 
-        loginPage.enterLogin(Data.Login.VALID_LOGIN);
+        loginPage.enterUsername(Data.Login.VALID_LOGIN);
 
         loginPage.clearUsernameWithBackspace();
         loginPageAssertions.assertUsernameCleared();

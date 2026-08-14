@@ -19,23 +19,32 @@ public class TestConfig {
         return Boolean.parseBoolean(headless);
     }
 
+
     public static String getBaseUrl() {
         return System.getProperty("base.url",
                 System.getenv("BASE_URL") != null ? System.getenv("BASE_URL") : BASE_URL);
     }
 
-    public static ChromeOptions getChromeOptions(BrowserOrientation orientation) {
+    public static ChromeOptions getChromeOptions(BrowserOrientation orientation, boolean isSavePassword) {
         ChromeOptions options = new ChromeOptions();
 
-        options.addArguments("--incognito");
-        options.addArguments("--disable-save-password-bubble");
-        options.addArguments("--disable-features=PasswordLeakDetection,SavePassword");
+        if (!isSavePassword) {
+            options.addArguments("--incognito");
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--disable-features=PasswordLeakDetection,SavePassword");
 
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("credentials_enable_service", false);
-        prefs.put("profile.password_manager_enabled", false);
-        prefs.put("profile.password_manager_leak_detection.enabled", false);
-        options.setExperimentalOption("prefs", prefs);
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+            prefs.put("profile.password_manager_leak_detection.enabled", false);
+            options.setExperimentalOption("prefs", prefs);
+        } else {
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("credentials_enable_service", true);
+            prefs.put("profile.password_manager_enabled", true);
+            prefs.put("profile.password_manager_leak_detection.enabled", true);
+            options.setExperimentalOption("prefs", prefs);
+        }
 
         switch (orientation) {
             case MB:

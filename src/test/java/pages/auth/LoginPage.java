@@ -25,7 +25,6 @@ public class LoginPage extends BasePage {
     private static final By CROSS_BUTTON_USERNAME = By.xpath("//div[@class='form_group'][1]//svg");
     private static final By CROSS_BUTTON_PASSWORD = By.xpath("//div[@class='form_group'][2]//svg]");
 
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -121,6 +120,11 @@ public class LoginPage extends BasePage {
         return getUsernamesFromCredentialsBlock(availableUsernames);
     }
 
+    @Step("Получение саджеста ошибки")
+    public WebElement getErrorMessage() {
+        return findElement(ERROR_MESSAGE);
+    }
+
     @Step("Получение доступного пароля")
     public String getAvailablePassword() {
         WebElement passwords = findElement(AVAILABLE_PASSWORDS);
@@ -128,7 +132,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Ввод логина: {username}")
-    public void enterLogin(String username) {
+    public void enterUsername(String username) {
         typeText(USERNAME, username);
     }
 
@@ -144,7 +148,7 @@ public class LoginPage extends BasePage {
 
     @Step("Вход с логином: {username} и паролем: {password}")
     public void login(String username, String password) {
-        enterLogin(username);
+        enterUsername(username);
         enterPassword(password);
         clickLogin();
     }
