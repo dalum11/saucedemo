@@ -53,7 +53,7 @@ public class CrossBrowserTest extends BaseTest {
         String expectedUsername = Data.Login.VALID_LOGIN;
         String expectedPassword = Data.Login.VALID_PASSWORD;
 
-        loginPage.enterLogin(expectedUsername);
+        loginPage.enterUsername(expectedUsername);
 
         String copiedUsername = loginPage.getUsernameText();
         ClipboardUtils.copyToClipboard(copiedUsername);

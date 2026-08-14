@@ -61,10 +61,12 @@ public class DriverFactory {
     private static WebDriver createDriver(Browser browser, BrowserOrientation orientation) {
         log.info("Создание драйвера для браузера: {}, разрешение: {}", browser, orientation);
 
+        boolean isSavePassword = Boolean.parseBoolean(System.getProperty("save.passwords", "false"));
+
         switch (browser) {
             case GOOGLE_CHROME -> {
                 WebDriverManager.chromedriver().setup();
-                ChromeOptions options = TestConfig.getChromeOptions(orientation);
+                ChromeOptions options = TestConfig.getChromeOptions(orientation, isSavePassword);
                 return new ChromeDriver(options);
             }
 
@@ -72,7 +74,7 @@ public class DriverFactory {
                 boolean isCI = Boolean.parseBoolean(System.getProperty("ci", "false"));
                 String os = System.getProperty("os.name").toLowerCase();
 
-                ChromeOptions options = TestConfig.getChromeOptions(orientation);
+                ChromeOptions options = TestConfig.getChromeOptions(orientation, isSavePassword);
 
                 if (isCI || os.contains("linux")) {
                     System.setProperty("webdriver.chrome.driver", "/usr/local/bin/yandexdriver");

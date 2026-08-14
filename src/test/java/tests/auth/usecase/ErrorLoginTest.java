@@ -2,6 +2,7 @@ package tests.auth.usecase;
 
 import core.assertions.AuthAssertions;
 import core.utils.CursorUtils;
+import core.utils.NetworkUtils;
 import pages.auth.LoginPageAssertions;
 import tests.common.BaseTest;
 import io.qameta.allure.*;
@@ -22,6 +23,7 @@ public class ErrorLoginTest extends BaseTest {
     private AuthAssertions authAssertions;
     private CursorUtils cursorUtils;
     private LoginPageAssertions loginPageAssertions;
+    private NetworkUtils networkUtils;
 
     @BeforeEach
     @Step("Подготовка теста")
@@ -31,6 +33,7 @@ public class ErrorLoginTest extends BaseTest {
         authAssertions = new AuthAssertions(loginPage);
         cursorUtils = new CursorUtils(driver);
         loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
+        networkUtils = new NetworkUtils(driver);
         openLoginPage();
     }
 
@@ -42,13 +45,7 @@ public class ErrorLoginTest extends BaseTest {
     @Tag("regression")
     @Step("Выполнить авторизацию с данными, которых нет в системе")
     void loginWithWrongCredentials_ShouldFailAuth() {
-        String invalidLogin = "unknown_user";
-        String invalidPassword = "unknown_password";
-
-        authAssertions.assertCredentialsAreFilled(invalidLogin, invalidPassword);
-        loginPage.clickLogin();
-
-        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.INVALID_CREDENTIALS);
+        assertGettingUserNotFoundError();
     }
 
     @Test
@@ -104,7 +101,7 @@ public class ErrorLoginTest extends BaseTest {
     @Description("Проверка, что нельзя авторизоваться с пустым паролем и получение ошибки")
     @Step("Попытка входа с пустым паролем")
     void loginWithEmptyPassword_ShouldShowPasswordRequiredError() {
-        loginPage.enterLogin(Data.Login.VALID_LOGIN);
+        loginPage.enterUsername(Data.Login.VALID_LOGIN);
         loginPageAssertions
                 .verifyUsernameFieldText(Data.Login.VALID_LOGIN)
                 .assertPasswordIsEmpty();
@@ -152,5 +149,47 @@ public class ErrorLoginTest extends BaseTest {
         loginPage.refresh();
 
         loginPageAssertions.assertCredentialsIsEmpty();
+    }
+
+    @Test
+    @Tag("smoke")
+    @Tag("regression")
+    @DisplayName("ID 11 - Восстановление формы после ошибки Несуществующий пользователь")
+    @Description("Проверка, что система восстанавливается после неуспешного входа иполучения ошибки Несуществующий " +
+            "пользователь")
+    @Step("Проверить авторизацию после получения ошибки Несуществующий пользователь")
+    @Disabled("Баг - сообщение об ошибке не пропадает после смены логина")
+    void loginFormStateAfterGettingUserNotFoundError_ShouldLoginCorrectly() {
+        assertGettingUserNotFoundError();
+
+        String username = Data.Login.VALID_LOGIN;
+        String password = Data.Login.VALID_PASSWORD;
+
+        loginPage.clearUsername();
+        loginPage.enterUsername(username);
+        loginPageAssertions.verifyUsernameFieldText(username)
+                .verifyLoginButtonEnabled()
+                .verifyNoErrorMessage();
+
+        loginPage.clickLogin();
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.INVALID_CREDENTIALS);
+
+        loginPage.clearPassword();
+        loginPage.enterPassword(Data.Login.VALID_PASSWORD);
+        authAssertions.assertPasswordIsMasked(password, password.length());
+        loginPageAssertions.verifyLoginButtonEnabled();
+
+        loginPage.clickLogin();
+        authAssertions.assertUserIsLoggedIn(0);
+    }
+
+    private void assertGettingUserNotFoundError() {
+        String invalidLogin = "unknown_user";
+        String invalidPassword = "unknown_password";
+
+        authAssertions.assertCredentialsAreFilled(invalidLogin, invalidPassword);
+        loginPage.clickLogin();
+
+        authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.INVALID_CREDENTIALS);
     }
 }

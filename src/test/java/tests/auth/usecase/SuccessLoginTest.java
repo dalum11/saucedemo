@@ -1,7 +1,11 @@
 package tests.auth.usecase;
 
 import core.assertions.AuthAssertions;
+import core.config.TestConfig;
 import core.utils.CursorUtils;
+import core.utils.NetworkUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.auth.LoginPageAssertions;
 import tests.common.BaseTest;
 import io.qameta.allure.*;
@@ -21,6 +25,8 @@ public class SuccessLoginTest extends BaseTest {
     private MainPage mainPage;
     private AuthAssertions authAssertions;
     private LoginPageAssertions loginPageAssertions;
+    private NetworkUtils networkUtils;
+    private static final Logger log = LoggerFactory.getLogger(SuccessLoginTest.class);
 
     @BeforeEach
     @Step("Подготовка теста")
@@ -30,7 +36,7 @@ public class SuccessLoginTest extends BaseTest {
         mainPage = new MainPage(driver);
         authAssertions = new AuthAssertions(loginPage);
         loginPageAssertions = new LoginPageAssertions(loginPage, driver, new CursorUtils(driver));
-        openLoginPage();
+        networkUtils = new NetworkUtils(driver);
     }
 
     @Test
@@ -41,6 +47,7 @@ public class SuccessLoginTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Step("Выполнить успешный вход в систему")
     void checkSuccessfulLoginWithValidUser() {
+        openLoginPage();
         int productCardIndex = 0;
         authAssertions.assertCredentialsAreFilled(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
 
@@ -56,6 +63,7 @@ public class SuccessLoginTest extends BaseTest {
     @Tag("regression")
     @Step("Тест долгой загрузки страницы")
     void loginWithPerformanceGlitchUser_ShouldLoadPageWithTimeout() {
+        openLoginPage();
         int productCardIndex = 0;
         authAssertions.assertCredentialsAreFilled(Data.Login.PERFORMANCE_GLITCH_LOGIN, Data.Login.VALID_PASSWORD);
         loginPage.clickLogin();
@@ -71,6 +79,7 @@ public class SuccessLoginTest extends BaseTest {
     @Description("Тест проверяет возможность повторного логина")
     @Step("Тест повторного логина")
     void loginAfterLogout_ShouldLoginAndLogoutCorrectly() {
+        openLoginPage();
         int productCardIndex = 0;
         loginPage.login(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
         mainPage.waitForPageLoad();
@@ -79,5 +88,67 @@ public class SuccessLoginTest extends BaseTest {
         mainPage.logout();
 
         authAssertions.assertUserIsLoggedOut();
+    }
+
+    @Test
+    @Tag("smoke")
+    @Tag("regression")
+    @DisplayName("ID 17 - Проверка авторизации при потере соединения, если пользователь уже посещал сайт")
+    @Description("Проверка, что при повторном посещении сайта и потере соединения отображается страница авторизации," +
+            "возможен вход в систему")
+    @Step("Проверить первую авторизацию пользователя при потере соединения (с кэшем)")
+    void authWithoutConnection_FirstLoginWithCache_ShouldLoginCorrectly() {
+        networkUtils.setIsSavePassword("true");
+        networkUtils.enableCache();
+
+        openLoginPage();
+        authAssertions.assertLoginPageIsDisplayedCorrectly();
+
+        loginPage.refresh();
+        authAssertions.assertLoginPageIsDisplayedCorrectly();
+
+        loginPage.login(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
+        mainPage.waitForPageLoad();
+
+        mainPage.logout();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        networkUtils.clearCookies();
+        networkUtils.setNetworkConditions(true, false);
+
+        authAssertions.assertLoginPageIsDisplayedCorrectly();
+        authAssertions.assertCredentialsAreFilled(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
+
+        loginPage.clickLogin();
+        authAssertions.assertUserIsLoggedIn(0);
+
+        networkUtils.enableNetwork();
+    }
+
+    @Test
+    @Tag("smoke")
+    @Tag("regression")
+    @DisplayName("ID 16 - Проверка получения ошибки при  потере соединения, если пользователь впервые на сайте")
+    @Description("Проверка, что при первом посещении сайта и потере соединения отображается ошибка браузера," +
+            "а не кастомная")
+    @Step("Проверить первую авторизацию пользователя при потере соединения (нет кэша)")
+    void authWithoutConnection_FirstLoginWithoutCache_ShouldLoginCorrectly() {
+        networkUtils.setNetworkConditions(true, true);
+        try {
+            openLoginPage();
+        } catch (Exception e) {
+            log.info("Получена ошибка при открытии страницы {}: {}", driver.getCurrentUrl(), e.getMessage());
+        }
+
+        authAssertions.assertGettingBrowserConnectionError();
+        networkUtils.enableNetwork();
+        loginPage.refresh();
+
+        authAssertions.assertLoginPageIsDisplayedCorrectly();
     }
 }

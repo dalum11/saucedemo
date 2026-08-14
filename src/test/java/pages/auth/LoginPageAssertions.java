@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class LoginPageAssertions extends BaseAssertions{
 
@@ -202,6 +203,11 @@ public class LoginPageAssertions extends BaseAssertions{
 
     public LoginPageAssertions assertPasswordTextLength(int expectedLength) {
         assertElementTextLength(loginPage.getPassword(), expectedLength);
+        return this;
+    }
+
+    public LoginPageAssertions verifyNoErrorMessage() {
+        assertFalse(loginPage.isErrorMessageDisplayed());
         return this;
     }
 }

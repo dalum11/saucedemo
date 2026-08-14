@@ -32,3 +32,4 @@
 | 6          | Повторить шаги 1-2 с Логин Смешанный   | Результат полностью соответствует этим шагам                                                       |
 
 ## Связанный автотест
+LoginPageFieldsValidation.usernameValidInput_ShouldDisplayCorrectly()

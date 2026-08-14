@@ -25,4 +25,4 @@
 | 4          | Нажать кнопку Login              | * Происходит редирект на /inventory.html<br/>* Ошибок нет                                                                                                                    |
 
 ## Связанный автотест
--
+ErrorLoginTest.loginFormStateAfterGettingUserNotFoundError_ShouldLoginCorrectly()
