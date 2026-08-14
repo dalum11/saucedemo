@@ -1,0 +1,1 @@
+Получение атрибута 'value' элемента: By.id: login-button

@@ -1,0 +1,1 @@
+Установка условий сети: offline=true, cacheDisabled=true

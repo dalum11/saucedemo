@@ -1,1 +1,0 @@
-Using chromedriver 151.0.7922.77 (resolved driver for Chrome 151)
