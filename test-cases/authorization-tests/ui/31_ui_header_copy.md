@@ -19,3 +19,4 @@
 | 3          | Вставить скопированный текст в поле Username  | Текст вставлен и отображается в поле  |
 
 ## Связанный автотест
+LoginAdaptiveTest.mobileView_CheckHeader_ShouldDisplayCorrectly()

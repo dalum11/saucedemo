@@ -317,4 +317,19 @@ public class LoginPage extends BasePage {
     public void clearPasswordWithBackspace() {
         clearFieldWithBackspace(findElement(PASSWORD));
     }
+
+    @Step("Скролл к элементу {locator}")
+    public void scrollTo(By locator) {
+        scrollToElement(findElement(locator));
+    }
+
+    @Step("Скролл по координатам {x}, {y}")
+    public void scrollTo(int x, int y) {
+        super.scrollTo(x, y);
+    }
+
+    @Step("Получить положение текста шапки сайта")
+    public Number getYLogo() {
+        return getY(getLogo());
+    }
 }

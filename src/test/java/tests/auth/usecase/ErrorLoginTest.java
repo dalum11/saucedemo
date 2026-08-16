@@ -4,6 +4,7 @@ import core.assertions.AuthAssertions;
 import core.utils.CursorUtils;
 import core.utils.NetworkUtils;
 import pages.auth.LoginPageAssertions;
+import scenario.auth.PerformLoginScenario;
 import tests.common.BaseTest;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
@@ -11,6 +12,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.auth.LoginPage;
 import data.Data;
+
+import java.time.LocalDateTime;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Epic("Авторизация")
 @Feature("Вход")
@@ -34,7 +39,6 @@ public class ErrorLoginTest extends BaseTest {
         cursorUtils = new CursorUtils(driver);
         loginPageAssertions = new LoginPageAssertions(loginPage, driver, cursorUtils);
         networkUtils = new NetworkUtils(driver);
-        openLoginPage();
     }
 
     @Test
@@ -45,6 +49,7 @@ public class ErrorLoginTest extends BaseTest {
     @Tag("regression")
     @Step("Выполнить авторизацию с данными, которых нет в системе")
     void loginWithWrongCredentials_ShouldFailAuth() {
+        openLoginPage();
         assertGettingUserNotFoundError();
     }
 
@@ -55,6 +60,7 @@ public class ErrorLoginTest extends BaseTest {
     @Tag("regression")
     @Step("Ввести данные заблокированного пользователя")
     void loginByBlockedUser_ShouldFailAuth() {
+        openLoginPage();
         authAssertions.assertCredentialsAreFilled(Data.Login.LOCKED_OUT_LOGIN, Data.Login.VALID_PASSWORD);
         loginPage.clickLogin();
 
@@ -68,6 +74,7 @@ public class ErrorLoginTest extends BaseTest {
     @Description("Проверка, что нельзя авторизоваться с пустым логином и получение ошибки")
     @Step("Попытка входа с пустым логином")
     void loginWithEmptyUsername_ShouldShowUsernameRequiredError() {
+        openLoginPage();
         String expectedPassword = Data.Login.VALID_PASSWORD;
 
         authAssertions.assertCredentialsAreFilled("", expectedPassword);
@@ -87,6 +94,7 @@ public class ErrorLoginTest extends BaseTest {
             "и отображает сообщение об ошибке валидации")
     @Step("Попытка входа с логином из пробелов")
     void loginWithBlankUsername_ShouldShowUsernameRequiredError(String username) {
+        openLoginPage();
         authAssertions.assertCredentialsAreFilled(username, Data.Login.VALID_PASSWORD);
 
         loginPage.clickLogin();
@@ -101,6 +109,7 @@ public class ErrorLoginTest extends BaseTest {
     @Description("Проверка, что нельзя авторизоваться с пустым паролем и получение ошибки")
     @Step("Попытка входа с пустым паролем")
     void loginWithEmptyPassword_ShouldShowPasswordRequiredError() {
+        openLoginPage();
         loginPage.enterUsername(Data.Login.VALID_LOGIN);
         loginPageAssertions
                 .verifyUsernameFieldText(Data.Login.VALID_LOGIN)
@@ -120,6 +129,7 @@ public class ErrorLoginTest extends BaseTest {
             "и отображает сообщение об ошибке валидации")
     @Step("Попытка входа с паролем из пробелов")
     void loginWithBlankPassword_ShouldShowUsernameRequiredError(String password) {
+        openLoginPage();
         authAssertions.assertCredentialsAreFilled(Data.Login.VALID_PASSWORD, password);
 
         loginPage.clickLogin();
@@ -133,6 +143,7 @@ public class ErrorLoginTest extends BaseTest {
     @Step("Тест попытки входа с пустым логином и паролем")
     @Disabled("Баг - вместо ошибки валидации логина показывает ошибку для заблокированного пользователя")
     void loginWithEmptyBothFields_ShouldShowUsernameRequiredError() {
+        openLoginPage();
         loginPage.login("", "");
 
         authAssertions.assertPageNotChangedAfterGettingError(Data.ErrorMessages.EMPTY_USERNAME);
@@ -145,6 +156,8 @@ public class ErrorLoginTest extends BaseTest {
     @Description("Проверка, что данные не сохраняются после обновления страницы авторизации, если они не сохранены в браузере")
     @Step("Сбросить состояние полей авторизации после обновления страницы")
     void loginFieldsStateAfterRefresh_ShouldDisplayEmptyFields(){
+        openLoginPage();
+
         authAssertions.assertCredentialsAreFilled(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
         loginPage.refresh();
 
@@ -160,6 +173,8 @@ public class ErrorLoginTest extends BaseTest {
     @Step("Проверить авторизацию после получения ошибки Несуществующий пользователь")
     @Disabled("Баг - сообщение об ошибке не пропадает после смены логина")
     void loginFormStateAfterGettingUserNotFoundError_ShouldLoginCorrectly() {
+        openLoginPage();
+
         assertGettingUserNotFoundError();
 
         String username = Data.Login.VALID_LOGIN;
@@ -181,6 +196,34 @@ public class ErrorLoginTest extends BaseTest {
 
         loginPage.clickLogin();
         authAssertions.assertUserIsLoggedIn(0);
+    }
+
+    @Test
+    @Tag("smoke")
+    @Tag("regression")
+    @DisplayName("ID 22 - Проверка получения браузерной ошибки при превышении таймаута авторизации")
+    @Description("Проверка, что при падении запроса авторизации (таймаут - 10 секунд) отображается браузерная ошибка, а не\n" +
+            "пользовательская")
+    @Step("Проверить авторизацию после истечения таймаута запроса авторизации")
+    @Disabled("Баг - запроса авторизации нет (не предусмотрен)")
+    void loginTimeoutExceeded_ShouldDisplayBrowserError() {
+        networkUtils.disableCache();
+        networkUtils.setSlow3G();
+
+        openLoginPage();
+        authAssertions.assertCredentialsAreFilled(Data.Login.VALID_LOGIN, Data.Login.VALID_PASSWORD);
+
+        LocalDateTime authTime = LocalDateTime.now();
+        loginPage.clickLogin();
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        authAssertions.assertGettingBrowserConnectionError();
+
+        assertThat(currentTime)
+                .isAfterOrEqualTo(authTime)
+                .hasSecond(10);
+
+        networkUtils.setNormalNetwork();
     }
 
     private void assertGettingUserNotFoundError() {
