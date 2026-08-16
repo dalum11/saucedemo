@@ -1,0 +1,1 @@
+Клик по элементу с JS: By.id: react-burger-menu-btn

@@ -1,0 +1,1 @@
+Ввод текста 'secret_sauce' в элемент: By.id: password

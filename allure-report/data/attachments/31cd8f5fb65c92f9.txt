@@ -1,0 +1,1 @@
+Сохранено в localStorage: savedPassword = secret_sauce

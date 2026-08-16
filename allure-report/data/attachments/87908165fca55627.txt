@@ -1,0 +1,1 @@
+Сохранено в localStorage: savedUsername = standard_user

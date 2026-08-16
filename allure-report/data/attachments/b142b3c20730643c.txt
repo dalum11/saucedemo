@@ -1,0 +1,1 @@
+Ожидание видимости элемента: By.id: react-burger-menu-btn
