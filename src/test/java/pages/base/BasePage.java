@@ -123,6 +123,15 @@ public abstract class BasePage {
         jsExecutor.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
     }
 
+    @Step("Скролл по координатам")
+    protected void scrollTo(int x, int y) {
+        jsExecutor.executeScript("window.scrollBy(" + x + ", " + y + ");");
+    }
+
+    protected Number getY(WebElement element) {
+        return (Number) jsExecutor.executeScript("return arguments[0].getBoundingClientRect().top;", element);
+    }
+
     @Step("Проверка отображения длемента {locator}")
     protected boolean isDisplayed(By locator) {
         return findElement(locator).isDisplayed();

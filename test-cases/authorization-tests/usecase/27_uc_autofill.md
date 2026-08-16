@@ -27,3 +27,4 @@
 | 3          | Нажать на кнопку Login                 | * Редирект на /inventory.html<br/>* В URL отсутствует параметр /error<br/>* На странице отображается список товаров<br/>* В правом верхнем углу видна иконка Корзина<br/>* В шапке страницы отображается логотип SwagLabs |
 
 ## Связанный автотест
+SuccessLoginTest.authWithSavedCredentials_ShouldAuthSuccessful()

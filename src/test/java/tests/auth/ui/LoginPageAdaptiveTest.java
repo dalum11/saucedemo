@@ -3,6 +3,8 @@ package tests.auth.ui;
 import core.annotations.BrowserResolution;
 import core.assertions.AuthAssertions;
 import core.config.BrowserOrientation;
+import core.config.TestConfig;
+import core.utils.ClipboardUtils;
 import core.utils.CursorUtils;
 import core.utils.KeyboardUtils;
 import io.qameta.allure.*;
@@ -88,5 +90,27 @@ public class LoginPageAdaptiveTest extends BaseTest {
     @Disabled("Баг - кнопка Логин доступна без заполнения всех обязательных полей")
     void desktopActions_PageShouldBeInteractive() {
         performLoginScenario.performSuccessfulLoginWithCursorChecks();
+    }
+
+    @Test
+    @BrowserResolution(BrowserOrientation.MB)
+    @DisplayName("ID 31 - Проверка шапки сайта")
+    @Description("Проверка взаимодействия с шапкой сайта (нажатие, копирование текста)")
+    @Disabled("Шапка не фиксируется при скролле")
+    @Step("Проверить шапку сайта")
+    void mobileView_CheckHeader_ShouldDisplayCorrectly() {
+        authAssertions.assertLoginPageIsDisplayedCorrectly();
+
+        loginPage.getLogo().click();
+        authAssertions.assertPageNotChanged(driver, TestConfig.getBaseUrl());
+
+        ClipboardUtils.copyToClipboard(loginPage.getPageTitleText());
+
+        String copiedText = ClipboardUtils.getClipboardContent();
+
+        ClipboardUtils.pasteToClipboard(loginPage.getUsername());
+        loginPageAssertions.verifyUsernameFieldText(copiedText);
+
+        loginPageAssertions.assertLogoIsFixedByScroll();
     }
 }

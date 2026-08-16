@@ -278,4 +278,9 @@ public abstract class BaseAssertions {
                 .as("Длина текста должна быть " + expectedLength)
                 .isEqualTo(expectedLength);
     }
+
+    protected void assertElementPositionNotChanged(double positionBefore, double positionAfter) {
+        double delta = Math.abs(positionAfter - positionBefore);
+        assertTrue(delta < 1, "Позиция элемента сдвинулась: было -" + positionBefore + ",стало - " + positionAfter);
+    }
 }

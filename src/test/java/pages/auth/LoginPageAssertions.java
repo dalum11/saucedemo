@@ -210,4 +210,14 @@ public class LoginPageAssertions extends BaseAssertions{
         assertFalse(loginPage.isErrorMessageDisplayed());
         return this;
     }
+
+    public LoginPageAssertions assertLogoIsFixedByScroll() {
+        double yLogoBeforeScroll = loginPage.getYLogo().doubleValue();
+        loginPage.scrollTo(0, 500);
+
+        double yLogoAfterScroll = loginPage.getYLogo().doubleValue();
+        assertElementPositionNotChanged(yLogoBeforeScroll, yLogoAfterScroll);
+
+        return this;
+    }
 }

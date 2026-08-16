@@ -7,12 +7,15 @@ import core.utils.NetworkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.auth.LoginPageAssertions;
+import scenario.auth.PerformLoginScenario;
 import tests.common.BaseTest;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import pages.auth.LoginPage;
 import pages.main.MainPage;
 import data.Data;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Epic("Авторизация")
 @Feature("Вход")
@@ -128,6 +131,53 @@ public class SuccessLoginTest extends BaseTest {
         authAssertions.assertUserIsLoggedIn(0);
 
         networkUtils.enableNetwork();
+        networkUtils.setIsSavePassword("false");
+    }
+
+    @Test
+    @Tag("smoke")
+    @Tag("regression")
+    @DisplayName("ID 27 - Проверка автозаполнения сохранёнными данными")
+    @Description("Проверка успешной авторизации пользователя с сохранёнными в браузере данными")
+    @Step("Проверить успешную авторизацию с сохранёнными в браузере данными")
+    void authWithSavedCredentials_ShouldAuthSuccessful() {
+        String username = Data.Login.VALID_LOGIN;
+        String password = Data.Login.VALID_PASSWORD;
+        networkUtils.enableCache();
+
+        openLoginPage();
+
+        networkUtils.saveToLocalStorage("savedUsername", username);
+        networkUtils.saveToLocalStorage("savedPassword", password);
+
+        String savedUsername = networkUtils.getFromLocalStorage("savedUsername");
+        String savedPassword = networkUtils.getFromLocalStorage("savedPassword");
+        loginPage.enterUsername(savedUsername);
+        loginPage.enterPassword(savedPassword);
+
+        loginPageAssertions.verifyUsernameFieldText(savedUsername);
+        authAssertions.assertPasswordIsMasked(savedPassword, savedPassword.length());
+        loginPageAssertions.verifyLoginButtonEnabled();
+
+        loginPage.clickLogin();
+        mainPage.waitForPageLoad();
+        mainPage.logout();
+        loginPage.refresh();
+
+        String reloadedUsername = networkUtils.getFromLocalStorage("savedUsername");
+        String reloadedPassword = networkUtils.getFromLocalStorage("savedPassword");
+
+        loginPage.enterUsername(reloadedUsername);
+        loginPage.enterPassword(reloadedPassword);
+
+        loginPageAssertions.verifyUsernameFieldText(reloadedUsername);
+        authAssertions.assertPasswordIsMasked(reloadedPassword, reloadedPassword.length());
+        loginPageAssertions.verifyLoginButtonEnabled();
+
+        loginPage.clickLogin();
+        authAssertions.assertUserIsLoggedIn(0);
+
+        networkUtils.clearLocalStorage();
     }
 
     @Test
